@@ -11,16 +11,11 @@ import 'vuetify/styles'
 // Composables
 import { createVuetify } from 'vuetify'
 
-import darkTheme from '@/themes/darkTheme'
-import lightTheme from '@/themes/lightTheme'
+import display from '@/theme/display'
+import theme from '@/theme/theme'
 
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({
-  theme: {
-    defaultTheme: 'lightTheme',
-    themes: {
-      lightTheme,
-      darkTheme
-    }
-  }
+  theme,
+  display
 })
