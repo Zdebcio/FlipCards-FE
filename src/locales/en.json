@@ -1,3 +1,6 @@
 {
+  "$vuetify": {
+    "noDataText": "No data"
+  },
   "hello": "Hello World"
 }
