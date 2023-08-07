@@ -1,13 +1,22 @@
-<template>
-  <v-app-bar flat>
-    <v-app-bar-title>
-      <v-icon icon="mdi-circle-slice-6" />
+<script lang="ts" setup>
+import { useDisplay } from 'vuetify'
 
-      Essentials Preset
-    </v-app-bar-title>
+defineEmits<{
+  (e: 'openDrawer', value?: boolean): void
+}>()
+
+const { mobile } = useDisplay()
+</script>
+
+<template>
+  <v-app-bar
+    scroll-behavior="hide"
+    :border="0"
+    flat
+    elevation="2"
+    color="background-darken"
+    scroll-threshold="220"
+  >
+    <v-app-bar-nav-icon v-if="mobile" @click="$emit('openDrawer')"></v-app-bar-nav-icon>
   </v-app-bar>
 </template>
-
-<script lang="ts" setup>
-//
-</script>
