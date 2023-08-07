@@ -14,7 +14,9 @@ const darkTheme: ThemeDefinition = {
     error: '#FF0022',
     success: '#5AFF15',
     info: '#2196F3',
-    warning: '#FB8C00'
+    warning: '#FB8C00',
+    overlay: '#000000',
+    surface: '#000000'
   }
 }
 
