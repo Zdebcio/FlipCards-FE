@@ -4,7 +4,7 @@ import darkTheme from './pallettes/darkTheme'
 import lightTheme from './pallettes/lightTheme'
 
 const theme: VuetifyOptions['theme'] = {
-  defaultTheme: 'lightTheme',
+  defaultTheme: 'darkTheme',
   themes: {
     lightTheme,
     darkTheme
