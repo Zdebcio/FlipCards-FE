@@ -15,6 +15,23 @@ const routes = [
         component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue')
       }
     ]
+  },
+  {
+    path: '/auth',
+    redirect: { path: '/auth/login' },
+    component: () => import('@/layouts/auth/Auth.vue'),
+    children: [
+      {
+        path: 'login',
+        name: 'Login',
+        component: () => import('@/views/Login.vue')
+      },
+      {
+        path: 'register',
+        name: 'Register',
+        component: () => import('@/views/Register.vue')
+      }
+    ]
   }
 ]
 
