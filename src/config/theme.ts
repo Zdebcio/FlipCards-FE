@@ -1,7 +1,7 @@
 import { VuetifyOptions } from 'vuetify'
 
-import darkTheme from './pallettes/darkTheme'
-import lightTheme from './pallettes/lightTheme'
+import darkTheme from './themes/darkTheme'
+import lightTheme from './themes/lightTheme'
 
 const theme: VuetifyOptions['theme'] = {
   defaultTheme: 'darkTheme',
