@@ -16,13 +16,15 @@ import { createVueI18nAdapter } from 'vuetify/locale/adapters/vue-i18n'
 
 import i18n from './i18n'
 
-import display from '@/theme/display'
-import theme from '@/theme/theme'
+import defaults from '@/config/defaults'
+import display from '@/config/display'
+import theme from '@/config/theme'
 
 // https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
 export default createVuetify({
-  theme,
+  defaults,
   display,
+  theme,
   locale: {
     adapter: createVueI18nAdapter({ i18n, useI18n })
   }
