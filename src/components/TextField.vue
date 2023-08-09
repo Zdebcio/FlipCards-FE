@@ -1,11 +1,11 @@
 <script lang="ts" setup></script>
 
 <template>
-  <v-text-field class="textfield-wrapper"></v-text-field>
+  <v-text-field class="textfield"></v-text-field>
 </template>
 
 <style lang="scss" scoped>
-.textfield-wrapper:deep() {
+.textfield:deep() {
   & .v-field--variant-outlined .v-field__outline {
     border-radius: 15px;
     --v-field-border-width: 2px;
