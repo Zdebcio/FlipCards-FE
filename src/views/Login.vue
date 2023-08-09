@@ -9,8 +9,7 @@ import TextField from '@/components/TextField.vue'
     <TextField placeholder="password" />
   </div>
   <div class="d-flex justify-space-between">
-    <!-- TODO: find best solution for redirection -->
-    <Button @click="$router.push('/auth/register')" variant="text">No account? Register</Button>
+    <Button to="/auth/register" variant="text">No account? Register</Button>
     <Button width="120">Login</Button>
   </div>
 </template>
