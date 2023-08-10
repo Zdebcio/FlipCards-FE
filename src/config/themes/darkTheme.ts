@@ -1,4 +1,4 @@
-import { ThemeDefinition } from 'vuetify'
+import { type ThemeDefinition } from 'vuetify'
 
 const darkTheme: ThemeDefinition = {
   dark: true,

@@ -1,4 +1,4 @@
-import { VuetifyOptions } from 'vuetify'
+import { type VuetifyOptions } from 'vuetify'
 
 import darkTheme from './themes/darkTheme'
 import lightTheme from './themes/lightTheme'

@@ -1,4 +1,4 @@
-import { VuetifyOptions } from 'vuetify'
+import { type VuetifyOptions } from 'vuetify'
 
 const defaults: VuetifyOptions['defaults'] = {
   VTextField: {
