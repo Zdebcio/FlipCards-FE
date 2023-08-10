@@ -2,5 +2,22 @@
   "$vuetify": {
     "noDataText": "No data"
   },
-  "hello": "Hello World"
+  "hello": "Hello World",
+  "login": {
+    "fields": {
+      "email": "email",
+      "password": "email"
+    },
+    "loginButton": "Login",
+    "registerViewButton": "No account? Register"
+  },
+  "register": {
+    "fields": {
+      "email": "email",
+      "password": "password",
+      "repeatPassword": "repeat password"
+    },
+    "registerButton": "Register",
+    "loginViewButton": "Have account? Login"
+  }
 }

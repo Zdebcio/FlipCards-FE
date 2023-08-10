@@ -1,12 +1,14 @@
 <script lang="ts" setup>
-//
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
 </script>
 
 <template>
   <v-container class="fill-height">
     <v-responsive class="align-center text-center fill-height">
       <div class="text-body-2 font-weight-light mb-n1">
-        {{ $t('hello') }}
+        {{ t('hello') }}
       </div>
       <h1 class="text-h2 font-weight-bold">Vuetify</h1>
 
