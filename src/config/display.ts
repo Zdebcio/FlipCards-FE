@@ -1,4 +1,4 @@
-import { VuetifyOptions } from 'vuetify'
+import { type VuetifyOptions } from 'vuetify'
 
 const display: VuetifyOptions['display'] = {
   mobileBreakpoint: 'lg',
