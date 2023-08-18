@@ -1,10 +1,13 @@
 // Composables
 import { createRouter, createWebHistory } from 'vue-router'
 
+import Cookies from 'js-cookie'
+
 const routes = [
   {
     path: '/',
     component: () => import('@/layouts/default/Default.vue'),
+    meta: { requiresAuth: true },
     children: [
       {
         path: '',
@@ -38,6 +41,13 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+})
+
+router.beforeEach(async (to, from) => {
+  const authToken = Cookies.get('authToken')
+  if (!authToken && to.meta.requiresAuth) {
+    return { name: 'Login' }
+  }
 })
 
 export default router
