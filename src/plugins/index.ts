@@ -8,6 +8,8 @@
 import type { App } from 'vue'
 
 // Plugins
+import { VueQueryPlugin } from '@tanstack/vue-query'
+
 import router from '../router'
 import pinia from '../store'
 
@@ -17,5 +19,5 @@ import { loadFonts } from './webfontloader'
 
 export function registerPlugins(app: App) {
   loadFonts()
-  app.use(vuetify).use(router).use(pinia).use(i18n)
+  app.use(vuetify).use(router).use(pinia).use(VueQueryPlugin).use(i18n)
 }
