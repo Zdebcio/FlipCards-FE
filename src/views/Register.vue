@@ -2,26 +2,21 @@
 import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
-import { useAuthStore } from '../store/Auth'
+import { useAuthRegister } from '../services/api'
 
 import Button from '@/components/Button.vue'
 import TextField from '@/components/TextField.vue'
 
 const { t } = useI18n()
-
-const tasksStore = useAuthStore()
+const { mutate } = useAuthRegister()
 
 const email = ref('')
 const password = ref('')
 const repeatPassword = ref('')
-
-const handleSubmit = () => {
-  tasksStore.register({ email: email.value, password: password.value })
-}
 </script>
 
 <template>
-  <form @submit.prevent="handleSubmit()">
+  <form @submit.prevent="mutate({ email, password })">
     <div class="my-7">
       <TextField v-model="email" name="email" :placeholder="t('register.fields.email')" />
       <TextField
