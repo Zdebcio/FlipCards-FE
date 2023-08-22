@@ -1,16 +1,21 @@
 import { useMutation } from '@tanstack/vue-query'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import Cookies from 'js-cookie'
 import jwtDecode, { type JwtPayload } from 'jwt-decode'
 
-import type { AuthForm, User } from '@/interfaces'
+import type { AuthForm, User, GenericKeys } from '@/interfaces'
 
 import config from '@/config'
 
 const AUTH_API = `${config.API_URL}/auth`
 
+interface SpecialError {
+  status?: number
+  data?: { [key: string]: string | number }
+}
+
 export function useAuthLogin() {
-  return useMutation<User, Error, AuthForm>({
+  return useMutation<User, AxiosError<GenericKeys>, AuthForm>({
     mutationKey: ['auth/login'],
     mutationFn: async (fields): Promise<User> => {
       const { data, headers } = await axios.post(`${AUTH_API}/login`, fields)
@@ -28,6 +33,12 @@ export function useAuthLogin() {
 
       return data
     }
+    // onError: (error): SpecialError => {
+    //   return {
+    //     status: error.response?.status,
+    //     data: error.response?.data
+    //   }
+    // }
   })
 }
 
