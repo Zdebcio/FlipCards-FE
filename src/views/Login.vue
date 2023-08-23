@@ -1,32 +1,35 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
 
-import { toTypedSchema } from '@vee-validate/zod'
 import { PublicPathState, useForm } from 'vee-validate'
-import * as zod from 'zod'
 
+import router from '../router'
+import { loginSchema } from '../schemas'
 import { useAuthLogin } from '../services/api'
 
 import Button from '@/components/Button.vue'
 import TextField from '@/components/TextField.vue'
 
 const { t } = useI18n()
-const { mutate, isError, status, reset } = useAuthLogin()
-
-const loginSchema = toTypedSchema(
-  zod.object({
-    email: zod.string().nonempty('This is required'),
-    password: zod.string().nonempty('This is required')
-  })
-)
+const { mutateAsync, error, isLoading, isError } = useAuthLogin()
 
 const { defineComponentBinds, handleSubmit } = useForm({
   validationSchema: loginSchema
 })
 
+const displayApiError = () => {
+  if (!isError.value) return false
+  if (error.value?.response?.status === 422) {
+    return t('login.errors.invalidData')
+  }
+
+  return t('login.errors.other')
+}
+
 const vuetifyConfig = (state: PublicPathState) => ({
   props: {
-    error: state.errors.length || isError.value
+    error: !!state.errors.length || isError.value,
+    'error-messages': state.path === 'password' && displayApiError()
   },
   validateOnValueUpdate: true
 })
@@ -34,8 +37,14 @@ const vuetifyConfig = (state: PublicPathState) => ({
 const email = defineComponentBinds('email', vuetifyConfig)
 const password = defineComponentBinds('password', vuetifyConfig)
 
-const onSubmit = handleSubmit(values => {
-  mutate(values)
+const onSubmit = handleSubmit(async (values, actions) => {
+  try {
+    await mutateAsync(values)
+    actions.resetForm()
+    router.push('/')
+  } catch (error) {
+    actions.resetField('password')
+  }
 })
 </script>
 
@@ -49,13 +58,12 @@ const onSubmit = handleSubmit(values => {
         name="password"
         type="password"
       />
-      {{ error?.response?.status }}
     </div>
     <div class="d-flex justify-space-between">
       <Button to="/auth/register" variant="text">
         {{ t('login.registerViewButton') }}
       </Button>
-      <Button width="120" type="submit">{{ t('login.loginButton') }}</Button>
+      <Button width="120" type="submit" :loading="isLoading">{{ t('login.loginButton') }}</Button>
     </div>
   </form>
 </template>

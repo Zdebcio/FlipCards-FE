@@ -43,10 +43,13 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach(async (to, from) => {
+router.beforeEach(async to => {
   const authToken = Cookies.get('authToken')
   if (!authToken && to.meta.requiresAuth) {
     return { name: 'Login' }
+  }
+  if (authToken && !to.meta.requiresAuth) {
+    return { name: 'Home' }
   }
 })
 
