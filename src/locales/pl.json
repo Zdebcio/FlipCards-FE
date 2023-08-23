@@ -9,7 +9,12 @@
       "password": "hasło"
     },
     "loginButton": "Zaloguj",
-    "registerViewButton": "Nie masz konta? Utwórz"
+    "registerViewButton": "Nie masz konta? Utwórz",
+    "errors": {
+      "invalidData": "Nieprawidłowy email lub hasło",
+      "other": "Coś poszło nie tak",
+      "required": "Pole jest wymagane"
+    }
   },
   "register": {
     "fields": {

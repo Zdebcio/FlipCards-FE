@@ -1,25 +1,59 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
+import { PublicPathState, useForm } from 'vee-validate'
+
+import router from '../router'
+import { loginSchema } from '../schemas'
 import { useAuthLogin } from '../services/api'
 
 import Button from '@/components/Button.vue'
 import TextField from '@/components/TextField.vue'
 
 const { t } = useI18n()
-const { mutate } = useAuthLogin()
+const { mutateAsync, error, isLoading, isError } = useAuthLogin()
 
-const email = ref('')
-const password = ref('')
+const { defineComponentBinds, handleSubmit } = useForm({
+  validationSchema: loginSchema
+})
+
+const displayApiError = () => {
+  if (!isError.value) return false
+  if (error.value?.response?.status === 422) {
+    return t('login.errors.invalidData')
+  }
+
+  return t('login.errors.other')
+}
+
+const vuetifyConfig = (state: PublicPathState) => ({
+  props: {
+    error: !!state.errors.length || isError.value,
+    'error-messages': state.path === 'password' && displayApiError()
+  },
+  validateOnValueUpdate: true
+})
+
+const email = defineComponentBinds('email', vuetifyConfig)
+const password = defineComponentBinds('password', vuetifyConfig)
+
+const onSubmit = handleSubmit(async (values, actions) => {
+  try {
+    await mutateAsync(values)
+    actions.resetForm()
+    router.push('/')
+  } catch (error) {
+    actions.resetField('password')
+  }
+})
 </script>
 
 <template>
-  <form @submit.prevent="mutate({ email, password })">
+  <form @submit.prevent="onSubmit">
     <div class="my-7">
-      <TextField v-model="email" :placeholder="t('register.fields.email')" name="email" />
+      <TextField v-bind="email" :placeholder="t('register.fields.email')" name="email" />
       <TextField
-        v-model="password"
+        v-bind="password"
         :placeholder="t('register.fields.password')"
         name="password"
         type="password"
@@ -29,7 +63,7 @@ const password = ref('')
       <Button to="/auth/register" variant="text">
         {{ t('login.registerViewButton') }}
       </Button>
-      <Button width="120" type="submit">{{ t('login.loginButton') }}</Button>
+      <Button width="120" type="submit" :loading="isLoading">{{ t('login.loginButton') }}</Button>
     </div>
   </form>
 </template>

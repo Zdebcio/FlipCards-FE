@@ -9,7 +9,12 @@
       "password": "email"
     },
     "loginButton": "Login",
-    "registerViewButton": "No account? Register"
+    "registerViewButton": "No account? Register",
+    "errors": {
+      "invalidData": "Incorrect email or password",
+      "other": "Something went wrong",
+      "required": "Fields is required"
+    }
   },
   "register": {
     "fields": {
