@@ -9,11 +9,6 @@ import config from '@/config'
 
 const AUTH_API = `${config.API_URL}/auth`
 
-interface SpecialError {
-  status?: number
-  data?: { [key: string]: string | number }
-}
-
 export function useAuthLogin() {
   return useMutation<User, AxiosError<GenericKeys>, AuthForm>({
     mutationKey: ['auth/login'],
@@ -33,12 +28,6 @@ export function useAuthLogin() {
 
       return data
     }
-    // onError: (error): SpecialError => {
-    //   return {
-    //     status: error.response?.status,
-    //     data: error.response?.data
-    //   }
-    // }
   })
 }
 
