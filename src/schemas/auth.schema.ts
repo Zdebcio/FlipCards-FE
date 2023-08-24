@@ -23,7 +23,7 @@ export const registerSchema = toTypedSchema(
       email: zod
         .string({ required_error: t('validation.fieldRequired') })
         .nonempty(t('validation.fieldRequired'))
-        .email(),
+        .email(t('validation.invalid_email')),
       password: zod
         .string({ required_error: t('validation.fieldRequired') })
         .nonempty(t('validation.fieldRequired'))
