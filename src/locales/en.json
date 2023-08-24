@@ -4,9 +4,14 @@
   },
   "hello": "Hello World",
   "validation": {
+    "conflict_email": "Email already exist",
+    "fieldRequired": "Field is required",
+    "invalid_email": "Invalid email",
+    "invalid_password": "Invalid password",
     "invalidLoginData": "Incorrect email or password",
     "other": "Something went wrong",
-    "fieldRequired": "Field is required"
+    "weak_password": "Password is too weak",
+    "diff_password": "Password are not matching"
   },
   "login": {
     "fields": {
@@ -20,7 +25,7 @@
     "fields": {
       "email": "email",
       "password": "password",
-      "repeatPassword": "repeat password"
+      "confirmPassword": "confirm password"
     },
     "registerButton": "Register",
     "loginViewButton": "Have account? Login"
