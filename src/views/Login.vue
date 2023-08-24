@@ -20,10 +20,10 @@ const { defineComponentBinds, handleSubmit } = useForm({
 const displayApiError = () => {
   if (!isError.value) return false
   if (error.value?.response?.status === 422) {
-    return t('login.errors.invalidData')
+    return t('validation.invalidLoginData')
   }
 
-  return t('login.errors.other')
+  return t('validation.other')
 }
 
 const vuetifyConfig = (state: PublicPathState) => ({

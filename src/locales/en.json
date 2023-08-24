@@ -3,18 +3,18 @@
     "noDataText": "No data"
   },
   "hello": "Hello World",
+  "validation": {
+    "invalidLoginData": "Incorrect email or password",
+    "other": "Something went wrong",
+    "fieldRequired": "Field is required"
+  },
   "login": {
     "fields": {
       "email": "email",
       "password": "email"
     },
     "loginButton": "Login",
-    "registerViewButton": "No account? Register",
-    "errors": {
-      "invalidData": "Incorrect email or password",
-      "other": "Something went wrong",
-      "required": "Fields is required"
-    }
+    "registerViewButton": "No account? Register"
   },
   "register": {
     "fields": {

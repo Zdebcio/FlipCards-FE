@@ -7,9 +7,11 @@ const t = i18n.global.t
 
 export const loginSchema = toTypedSchema(
   zod.object({
-    email: zod.string({ required_error: t('hello') }).nonempty(t('hello')),
+    email: zod
+      .string({ required_error: t('validation.fieldRequired') })
+      .nonempty(t('validation.fieldRequired')),
     password: zod
-      .string({ required_error: t('login.error.required') })
-      .nonempty(t('login.error.required'))
+      .string({ required_error: t('validation.fieldRequired') })
+      .nonempty(t('validation.fieldRequired'))
   })
 )

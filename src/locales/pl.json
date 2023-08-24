@@ -3,18 +3,18 @@
     "noDataText": "No data"
   },
   "hello": "Hello World",
+  "validation": {
+    "invalidLoginData": "Nieprawidłowy email lub hasło",
+    "other": "Coś poszło nie tak",
+    "fieldRequired": "Pole jest wymagane"
+  },
   "login": {
     "fields": {
       "email": "email",
       "password": "hasło"
     },
     "loginButton": "Zaloguj",
-    "registerViewButton": "Nie masz konta? Utwórz",
-    "errors": {
-      "invalidData": "Nieprawidłowy email lub hasło",
-      "other": "Coś poszło nie tak",
-      "required": "Pole jest wymagane"
-    }
+    "registerViewButton": "Nie masz konta? Utwórz"
   },
   "register": {
     "fields": {
