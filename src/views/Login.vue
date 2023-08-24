@@ -18,7 +18,7 @@ const { defineComponentBinds, handleSubmit } = useForm({
 })
 
 const displayApiError = () => {
-  if (!isError.value) return false
+  if (!isError.value) return ''
   if (error.value?.response?.status === 422) {
     return t('validation.invalidLoginData')
   }
@@ -29,7 +29,7 @@ const displayApiError = () => {
 const vuetifyConfig = (state: PublicPathState) => ({
   props: {
     error: !!state.errors.length || isError.value,
-    'error-messages': state.path === 'password' && displayApiError()
+    'error-messages': state.path === 'password' ? displayApiError() : ''
   },
   validateOnValueUpdate: true
 })

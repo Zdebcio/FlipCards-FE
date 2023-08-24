@@ -32,7 +32,7 @@ export function useAuthLogin() {
 }
 
 export function useAuthRegister() {
-  return useMutation<string, Error, AuthForm>({
+  return useMutation<string, AxiosError<GenericKeys>, AuthForm>({
     mutationKey: ['auth/register'],
     mutationFn: async (fields): Promise<string> => {
       const { data } = await axios.post(`${AUTH_API}/register`, fields)

@@ -4,9 +4,14 @@
   },
   "hello": "Hello World",
   "validation": {
+    "conflict_email": "Email już istnieje",
+    "fieldRequired": "Pole jest wymagane",
+    "invalid_email": "Nieprawidlowy email",
+    "invalid_password": "Nieprawidłowe hasło",
     "invalidLoginData": "Nieprawidłowy email lub hasło",
     "other": "Coś poszło nie tak",
-    "fieldRequired": "Pole jest wymagane"
+    "weak_password": "Hasło jest za słabe",
+    "diff_password": "Hasło nie pasuje"
   },
   "login": {
     "fields": {
