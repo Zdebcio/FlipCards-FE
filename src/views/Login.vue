@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
 
-import { PublicPathState, useForm } from 'vee-validate'
+import { type PublicPathState, useForm } from 'vee-validate'
 
 import router from '../router'
 import { loginSchema } from '../schemas'

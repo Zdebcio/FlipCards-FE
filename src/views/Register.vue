@@ -2,7 +2,7 @@
 import { useI18n } from 'vue-i18n'
 
 import { AxiosError } from 'axios'
-import { PublicPathState, useForm } from 'vee-validate'
+import { type PublicPathState, useForm } from 'vee-validate'
 
 import router from '../router'
 import { registerSchema } from '../schemas'
