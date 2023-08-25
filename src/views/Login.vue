@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n'
 
 import { type PublicPathState, useForm } from 'vee-validate'
 
+import paths from '../config/paths'
 import router from '../router'
 import { loginSchema } from '../schemas'
 import { useAuthLogin } from '../services/api'
@@ -41,7 +42,7 @@ const onSubmit = handleSubmit(async (values, actions) => {
   try {
     await mutateAsync(values)
     actions.resetForm()
-    router.push('/')
+    router.push(paths.HOME)
   } catch (error) {
     actions.resetField('password')
   }
@@ -60,7 +61,7 @@ const onSubmit = handleSubmit(async (values, actions) => {
       />
     </div>
     <div class="d-flex justify-space-between">
-      <Button to="/auth/register" variant="text">
+      <Button :to="paths.REGISTER" variant="text">
         {{ t('login.registerViewButton') }}
       </Button>
       <Button width="120" type="submit" :loading="isLoading">{{ t('login.loginButton') }}</Button>

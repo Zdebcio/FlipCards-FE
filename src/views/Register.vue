@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 import { AxiosError } from 'axios'
 import { type PublicPathState, useForm } from 'vee-validate'
 
+import paths from '../config/paths'
 import router from '../router'
 import { registerSchema } from '../schemas'
 import { useAuthRegister } from '../services/api'
@@ -33,7 +34,7 @@ const onSubmit = handleSubmit(async (values, actions) => {
   try {
     await mutateAsync({ email: values.email, password: values.password })
     actions.resetForm()
-    router.push('/auth/login')
+    router.push(paths.LOGIN)
   } catch (error) {
     if (error instanceof AxiosError) {
       switch (error.response?.status) {
@@ -77,7 +78,7 @@ const unhandledError = () => {
       }}</span>
     </div>
     <div class="d-flex justify-space-between">
-      <Button to="/auth/login" variant="text">
+      <Button :to="paths.LOGIN" variant="text">
         {{ t('register.loginViewButton') }}
       </Button>
       <Button type="submit" :loading="isLoading" min-width="120">{{
