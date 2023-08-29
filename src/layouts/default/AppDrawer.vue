@@ -1,35 +1,60 @@
 <script lang="ts" setup>
+import { RouteRecordRaw } from 'vue-router'
+
 import { useDisplay } from 'vuetify'
+
+import router from '../../router'
 
 defineProps<{
   open: boolean
 }>()
 
-defineEmits<{
+const emit = defineEmits<{
   (e: 'openDrawer', value?: boolean): void
 }>()
 
 const { mobile } = useDisplay()
+
+const handleOpenStatus = (status: boolean) => emit('openDrawer', status)
+
+const drawerRoutes = router.options.routes.filter(route => route.meta?.drawer)
+
+const getChildrenRoutes = (route: RouteRecordRaw) =>
+  route.children?.filter(route => route.meta?.drawer)
 </script>
 
 <template>
   <v-navigation-drawer
-    color="background-darken"
+    color="background-darken-1"
     :temporary="mobile"
     :model-value="mobile ? open : true"
     :scrim="false"
     :border="0"
     :elevation="0"
   >
-    <v-list>
-      <v-list-item></v-list-item>
-    </v-list>
+    <div class="h-100 d-flex flex-column justify-center pb-3">
+      <v-list class="flex-grow-1" v-for="route in drawerRoutes" :key="route.name">
+        <v-list-item
+          v-for="childRoute in getChildrenRoutes(route)"
+          :key="childRoute.name"
+          active-class="text-primary"
+          :to="`${route.path}${childRoute.path}`"
+          :exact="!!childRoute.meta?.exact"
+          :ripple="{ class: 'text-primary' }"
+          @click="handleOpenStatus(false)"
+          >{{ childRoute.name }}</v-list-item
+        >
+      </v-list>
+      <div class="pa-2 flex-grow-0">
+        <v-btn block>Logout</v-btn>
+      </div>
+    </div>
   </v-navigation-drawer>
   <v-overlay
     scrim="overlay"
     v-if="mobile"
     :model-value="open"
-    @click="$emit('openDrawer', false)"
+    @click="handleOpenStatus(false)"
     persistent
     :z-index="1003"
   ></v-overlay>
