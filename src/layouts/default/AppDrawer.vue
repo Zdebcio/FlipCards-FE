@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
-import { RouteRecordRaw } from 'vue-router'
+import { type RouteRecordRaw } from 'vue-router'
 
 import { useDisplay } from 'vuetify'
 
@@ -11,7 +11,7 @@ defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'openDrawer', value?: boolean): void
+  openDrawer: [value?: boolean]
 }>()
 
 const { t } = useI18n()

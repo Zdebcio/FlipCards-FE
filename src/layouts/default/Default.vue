@@ -18,7 +18,7 @@ const handleDrawerOpen = (value: boolean = !isDrawerOpen.value) => {
 
 <template>
   <v-layout class="rounded rounded-md bg-background">
-    <AppBar @open-drawer="handleDrawerOpen" />
+    <AppBar :open="isDrawerOpen" @open-drawer="handleDrawerOpen" />
     <AppDrawer :open="isDrawerOpen" @open-drawer="handleDrawerOpen" />
     <View />
   </v-layout>

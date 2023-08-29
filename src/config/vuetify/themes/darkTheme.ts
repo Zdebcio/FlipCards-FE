@@ -18,7 +18,8 @@ const darkTheme: ThemeDefinition = {
     info: '#2196F3',
     warning: '#F2AF29',
     overlay: '#000000',
-    surface: '#000000'
+    surface: '#000000',
+    text: '#F7F7FF'
   }
 }
 

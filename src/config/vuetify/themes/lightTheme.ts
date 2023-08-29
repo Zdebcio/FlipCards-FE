@@ -18,7 +18,8 @@ const lightTheme: ThemeDefinition = {
     info: '#2196F3',
     warning: '#F2AF29',
     overlay: '#000000',
-    surface: '#FFFFFF'
+    surface: '#FFFFFF',
+    text: '#2B343B'
   }
 }
 
