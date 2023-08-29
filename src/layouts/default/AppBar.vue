@@ -1,8 +1,15 @@
 <script lang="ts" setup>
 import { useDisplay } from 'vuetify'
 
+import MenuButton from '../../components/MenuButton.vue'
+import Logo from '../../components/icons/Logo.vue'
+
+defineProps<{
+  open: boolean
+}>()
+
 defineEmits<{
-  (e: 'openDrawer', value?: boolean): void
+  openDrawer: [value?: boolean]
 }>()
 
 const { mobile } = useDisplay()
@@ -17,6 +24,13 @@ const { mobile } = useDisplay()
     color="background-darken-1"
     scroll-threshold="220"
   >
-    <v-app-bar-nav-icon v-if="mobile" @click="$emit('openDrawer')"></v-app-bar-nav-icon>
+    <div class="w-100 d-flex justify-space-between align-center">
+      <MenuButton :visible="!!mobile" :open="open" @click="$emit('openDrawer')" />
+      <Logo height="50px" />
+      <v-btn icon color="primary" variant="elevated" class="mx-2">
+        <!-- TODO: integrate when API provided -->
+        <v-avatar color="primary">Z</v-avatar>
+      </v-btn>
+    </div>
   </v-app-bar>
 </template>

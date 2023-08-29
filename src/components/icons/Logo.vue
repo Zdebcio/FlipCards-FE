@@ -1,10 +1,12 @@
 <script lang="ts" setup>
 interface Props {
   width?: string
+  height?: string
   maxWidth?: string
 }
 
 withDefaults(defineProps<Props>(), {
+  height: 'auto',
   width: 'auto',
   maxWidth: 'auto'
 })
@@ -149,6 +151,7 @@ withDefaults(defineProps<Props>(), {
 
 <style lang="scss" scoped>
 svg {
+  height: v-bind('height');
   width: v-bind('width');
   max-width: v-bind('maxWidth');
 }

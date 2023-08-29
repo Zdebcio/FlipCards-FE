@@ -11,7 +11,7 @@ defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'openDrawer', value?: boolean): void
+  openDrawer: [value?: boolean]
 }>()
 
 const { t } = useI18n()

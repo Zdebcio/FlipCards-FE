@@ -1,9 +1,10 @@
 import { useMutation } from '@tanstack/vue-query'
-import axios, { AxiosError } from 'axios'
+import axios from 'axios'
 import Cookies from 'js-cookie'
 import jwtDecode, { type JwtPayload } from 'jwt-decode'
 
 import type { AuthForm, User, GenericKeys } from '@/interfaces'
+import type { AxiosError } from 'axios'
 
 import config from '@/config'
 
