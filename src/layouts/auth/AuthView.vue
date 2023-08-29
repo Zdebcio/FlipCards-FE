@@ -4,7 +4,7 @@ import Logo from '@/components/icons/Logo.vue'
 
 <template>
   <v-sheet
-    color="background-darken"
+    color="background-darken-1"
     class="d-flex flex-column align-center pa-10 ma-10 w-100 card-container"
     :elevation="5"
     rounded

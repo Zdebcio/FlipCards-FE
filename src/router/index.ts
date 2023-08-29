@@ -15,7 +15,7 @@ const routes = [
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        meta: { drawer: true },
+        meta: { drawer: true, exact: true },
         component: () => import(/* webpackChunkName: "home" */ '@/views/Home.vue')
       }
     ]

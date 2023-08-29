@@ -25,22 +25,30 @@ const getChildrenRoutes = (route: RouteRecordRaw) =>
 
 <template>
   <v-navigation-drawer
-    color="background-darken"
+    color="background-darken-1"
     :temporary="mobile"
     :model-value="mobile ? open : true"
     :scrim="false"
     :border="0"
     :elevation="0"
   >
-    <v-list v-for="route in drawerRoutes" :key="route.name">
-      <v-list-item
-        v-for="childRoute in getChildrenRoutes(route)"
-        :key="childRoute.name"
-        :to="`${route.path}${childRoute.path}`"
-        @click="handleOpenStatus(false)"
-        >{{ childRoute.name }}</v-list-item
-      >
-    </v-list>
+    <div class="h-100 d-flex flex-column justify-center pb-3">
+      <v-list class="flex-grow-1" v-for="route in drawerRoutes" :key="route.name">
+        <v-list-item
+          v-for="childRoute in getChildrenRoutes(route)"
+          :key="childRoute.name"
+          active-class="text-primary"
+          :to="`${route.path}${childRoute.path}`"
+          :exact="!!childRoute.meta?.exact"
+          :ripple="{ class: 'text-primary' }"
+          @click="handleOpenStatus(false)"
+          >{{ childRoute.name }}</v-list-item
+        >
+      </v-list>
+      <div class="pa-2 flex-grow-0">
+        <v-btn block>Logout</v-btn>
+      </div>
+    </div>
   </v-navigation-drawer>
   <v-overlay
     scrim="overlay"

@@ -14,7 +14,7 @@ const { mobile } = useDisplay()
     :border="0"
     flat
     elevation="2"
-    color="background-darken"
+    color="background-darken-1"
     scroll-threshold="220"
   >
     <v-app-bar-nav-icon v-if="mobile" @click="$emit('openDrawer')"></v-app-bar-nav-icon>
