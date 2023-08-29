@@ -12,7 +12,12 @@ module.exports = {
     '@vue/eslint-config-prettier/skip-formatting'
   ],
   parser: 'vue-eslint-parser',
+  parserOptions: {
+    parser: '@typescript-eslint/parser',
+    extraFileExtensions: ['.vue']
+  },
   rules: {
+    '@typescript-eslint/consistent-type-imports': 'error',
     'vue/multi-word-component-names': 'off',
     'import/default': 'off',
     'import/no-default-export': 'off',
