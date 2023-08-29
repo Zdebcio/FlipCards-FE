@@ -13,6 +13,10 @@
     "weak_password": "Password is too weak",
     "diff_password": "Password are not matching"
   },
+  "drawer": {
+    "Home": "Home",
+    "Logout": "Logout"
+  },
   "login": {
     "fields": {
       "email": "email",

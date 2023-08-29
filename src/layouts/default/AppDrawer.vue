@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
 import { RouteRecordRaw } from 'vue-router'
 
 import { useDisplay } from 'vuetify'
@@ -13,6 +14,7 @@ const emit = defineEmits<{
   (e: 'openDrawer', value?: boolean): void
 }>()
 
+const { t } = useI18n()
 const { mobile } = useDisplay()
 
 const handleOpenStatus = (status: boolean) => emit('openDrawer', status)
@@ -42,11 +44,11 @@ const getChildrenRoutes = (route: RouteRecordRaw) =>
           :exact="!!childRoute.meta?.exact"
           :ripple="{ class: 'text-primary' }"
           @click="handleOpenStatus(false)"
-          >{{ childRoute.name }}</v-list-item
+          >{{ t(`drawer.${String(childRoute.name)}`) }}</v-list-item
         >
       </v-list>
       <div class="pa-2 flex-grow-0">
-        <v-btn block>Logout</v-btn>
+        <v-btn block>{{ t(`drawer.Logout`) }}</v-btn>
       </div>
     </div>
   </v-navigation-drawer>
