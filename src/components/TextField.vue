@@ -15,5 +15,9 @@
   & .v-field--focused.v-field--variant-outlined .v-field__outline {
     --v-field-border-opacity: 1;
   }
+
+  & input[type='password'] {
+    font-family: Roboto, Arial, sans-serif;
+  }
 }
 </style>
