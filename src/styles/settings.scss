@@ -8,3 +8,9 @@
 // @use 'vuetify/settings' with (
 //   $color-pack: false
 // );
+
+$font-family: Jost, sans-serif;
+
+@use 'vuetify/settings' with (
+  $body-font-family: $font-family
+);
