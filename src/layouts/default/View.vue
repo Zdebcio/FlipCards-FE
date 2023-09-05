@@ -1,6 +1,8 @@
 <template>
   <v-main class="d-flex app-color" style="min-height: 100vh">
-    <router-view />
+    <div class="h-100 w-100 pa-2">
+      <router-view />
+    </div>
   </v-main>
 </template>
 

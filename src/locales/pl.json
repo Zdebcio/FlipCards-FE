@@ -14,7 +14,7 @@
     "diff_password": "Hasło nie pasuje"
   },
   "drawer": {
-    "Home": "Strona główna",
+    "Dashboard": "Strona główna",
     "Logout": "Wyloguj"
   },
   "login": {

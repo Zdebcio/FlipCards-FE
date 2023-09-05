@@ -14,7 +14,7 @@
     "diff_password": "Password are not matching"
   },
   "drawer": {
-    "Home": "Home",
+    "Dashboard": "Home",
     "Logout": "Logout"
   },
   "login": {

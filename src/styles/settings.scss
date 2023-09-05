@@ -1,16 +1,13 @@
-/**
- * src/styles/settings.scss
- *
- * Configures SASS variables and Vuetify overwrites
- */
-
-// https://vuetifyjs.com/features/sass-variables/`
-// @use 'vuetify/settings' with (
-//   $color-pack: false
-// );
-
 $font-family: Jost, sans-serif;
 
 @use 'vuetify/settings' with (
-  $body-font-family: $font-family
+  $body-font-family: $font-family,
+  $grid-breakpoints: (
+    'xs': 0,
+    'sm': 360px,
+    'md': 540px,
+    'lg': 800px,
+    'xl': 1280px,
+    'xxl': 1920px
+  )
 );
