@@ -34,7 +34,7 @@ const setBackgroundColor = () => {
     :active="false"
   >
     <div class="d-flex flex-column justify-space-between position-relative pa-3">
-      <v-list-item-title class="text-h5 py-8 d-flex align-center">{{ title }}</v-list-item-title>
+      <v-list-item-title class="text-h5 mt-3 d-flex align-center">{{ title }}</v-list-item-title>
 
       <v-list-item-subtitle class="text-h3 flex-grow-0 subtitle">
         <div id="subtitle-wrapper" class="d-flex flex-0-1">
@@ -62,7 +62,7 @@ const setBackgroundColor = () => {
 
     & > div {
       width: 100%;
-      min-height: 10rem;
+      min-height: 12rem;
       height: 30vw;
     }
   }

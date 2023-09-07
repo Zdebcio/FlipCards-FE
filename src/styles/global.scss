@@ -1,0 +1,69 @@
+@use './settings';
+
+:root {
+  @media (min-width: map-get(settings.$custom-breakpoints, 'xs')) {
+    --font-size: 10px;
+  }
+  @media (min-width: map-get(settings.$custom-breakpoints, 'sm')) {
+    --font-size: 12px;
+  }
+  @media (min-width: map-get(settings.$custom-breakpoints, 'md')) {
+    --font-size: 16px;
+  }
+  @media (min-width: map-get(settings.$custom-breakpoints, 'lg')) {
+    --font-size: 16px;
+  }
+  @media (min-width: map-get(settings.$custom-breakpoints, 'xl')) {
+    --font-size: 16px;
+  }
+  @media (min-width: map-get(settings.$custom-breakpoints, 'xxl')) {
+    --font-size: 16px;
+  }
+}
+
+// responsive font-size
+
+:root {
+  font-size: var(--font-size);
+}
+
+// responsive spacings (margin and padding)
+
+@for $i from 1 through 16 {
+  $properties: (
+    margin: 'm',
+    padding: 'p'
+  );
+
+  @each $name, $selector in $properties {
+    html .#{$selector}t-#{$i} {
+      #{$name}-top: calc((var(--font-size) / 4) * $i) !important;
+    }
+    html .#{$selector}b-#{$i} {
+      #{$name}-bottom: calc((var(--font-size) / 4) * $i) !important;
+    }
+    html .#{$selector}l-#{$i} {
+      #{$name}-left: calc((var(--font-size) / 4) * $i) !important;
+    }
+    html .#{$selector}r-#{$i} {
+      #{$name}-right: calc((var(--font-size) / 4) * $i) !important;
+    }
+    html .#{$selector}x-#{$i} {
+      #{$name}-left: calc((var(--font-size) / 4) * $i) !important;
+      #{$name}-right: calc((var(--font-size) / 4) * $i) !important;
+    }
+    html .#{$selector}y-#{$i} {
+      #{$name}-top: calc((var(--font-size) / 4) * $i) !important;
+      #{$name}-bottom: calc((var(--font-size) / 4) * $i) !important;
+    }
+    html .#{$selector}a-#{$i} {
+      #{$name}: calc((var(--font-size) / 4) * $i) !important;
+    }
+    html .#{$selector}s-#{$i} {
+      #{$name}-inline-start: calc((var(--font-size) / 4) * $i) !important;
+    }
+    html .#{$selector}e-#{$i} {
+      #{$name}-inline-end: calc((var(--font-size) / 4) * $i) !important;
+    }
+  }
+}
