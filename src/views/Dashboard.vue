@@ -1,4 +1,8 @@
 <script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
+
+const { t } = useI18n()
+
 import type { Tile } from '../interfaces'
 
 import PlaylistPlayButton from '@/components/PlaylistPlayButton.vue'
@@ -10,7 +14,7 @@ import ReplayIcon from '@/components/icons/ReplayIcon.vue'
 
 const tiles: Tile[] = [
   {
-    title: 'Last opened',
+    title: t('dashboard.navigation.lastOpened'),
     icon: ReplayIcon,
     bgColor: 'blue',
     // TODO: change when page will create
@@ -21,7 +25,7 @@ const tiles: Tile[] = [
     content: PlaylistPlayButton
   },
   {
-    title: 'All created lists',
+    title: t('dashboard.navigation.showLists'),
     icon: ListIcon,
     bgColor: 'pink',
     // TODO: change when page will create
@@ -31,7 +35,7 @@ const tiles: Tile[] = [
     xl: 4
   },
   {
-    title: 'Statistics',
+    title: t('dashboard.navigation.statistics'),
     icon: ChartBarIcon,
     bgColor: 'orange',
     // TODO: change when page will create
@@ -41,7 +45,7 @@ const tiles: Tile[] = [
     xl: 4
   },
   {
-    title: 'Create new list',
+    title: t('dashboard.navigation.createList'),
     icon: CreateListIcon,
     bgColor: 'green',
     // TODO: change when page will create

@@ -17,6 +17,14 @@
     "Dashboard": "Strona główna",
     "Logout": "Wyloguj"
   },
+  "dashboard": {
+    "navigation": {
+      "createList": "Utwórz nową liste",
+      "lastOpened": "Ostatnio uruchomiona",
+      "showLists": "Utworzone listy",
+      "statistics": "Statystyki"
+    }
+  },
   "login": {
     "fields": {
       "email": "email",
