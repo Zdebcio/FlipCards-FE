@@ -1,5 +1,5 @@
 <template>
-  <v-btn class="btn px-6 py-2"><slot></slot></v-btn>
+  <v-btn class="btn px-3 py-2"><slot></slot></v-btn>
 </template>
 
 <style lang="scss" scoped>
