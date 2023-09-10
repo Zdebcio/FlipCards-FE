@@ -53,7 +53,7 @@ const tiles = [
 </script>
 
 <template>
-  <section class="w-100 d-flex flex-column align-center">
+  <nav class="w-100 d-flex flex-column align-center">
     <v-list class="w-100" :max-width="thresholds.xl">
       <v-container fluid>
         <v-row>
@@ -74,5 +74,5 @@ const tiles = [
         </v-row>
       </v-container>
     </v-list>
-  </section>
+  </nav>
 </template>
