@@ -19,7 +19,16 @@ const lightTheme: ThemeDefinition = {
     warning: '#F2AF29',
     overlay: '#000000',
     surface: '#FFFFFF',
-    text: '#2B343B'
+    text: '#2B343B',
+    blue: '#279AF1',
+    'blue-darken-1': '#0C72C0',
+    pink: '#F06C9B',
+    'pink-darken-1': '#E82167',
+    orange: '#FD8B49',
+    'orange-darken-1': '#F25A02',
+    green: '#28E247',
+    'green-darken-1': '#16A22D',
+    white: '#F7F7FF'
   }
 }
 

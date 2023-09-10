@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import { useDisplay } from 'vuetify'
 
-import MenuButton from '../../components/MenuButton.vue'
-import Logo from '../../components/icons/Logo.vue'
+import MenuButton from '@/components/MenuButton.vue'
+import LogoIcon from '@/components/icons/LogoIcon.vue'
 
 defineProps<{
   open: boolean
@@ -26,7 +26,7 @@ const { mobile } = useDisplay()
   >
     <div class="w-100 d-flex justify-space-between align-center">
       <MenuButton :visible="!!mobile" :open="open" @click="$emit('openDrawer')" />
-      <Logo height="50px" />
+      <LogoIcon height="50px" />
       <v-btn icon color="primary" variant="elevated" class="mx-2">
         <!-- TODO: integrate when API provided -->
         <v-avatar color="primary">Z</v-avatar>

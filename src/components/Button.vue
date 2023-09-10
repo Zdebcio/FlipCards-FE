@@ -1,5 +1,3 @@
-<script lang="ts" setup></script>
-
 <template>
   <v-btn class="btn"><slot></slot></v-btn>
 </template>
