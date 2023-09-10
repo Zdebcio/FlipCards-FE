@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import DashboardList from '../components/DashboardList.vue'
+import DashboardNav from '@/components/DashboardNav.vue'
 </script>
 
 <template>
-  <DashboardList />
+  <DashboardNav />
 </template>

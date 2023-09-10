@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Logo from '@/components/icons/Logo.vue'
+import LogoIcon from '@/components/icons/LogoIcon.vue'
 </script>
 
 <template>
@@ -9,7 +9,7 @@ import Logo from '@/components/icons/Logo.vue'
     :elevation="5"
     rounded
   >
-    <Logo width="200px" alt="Flip Cards logo" />
+    <LogoIcon width="200px" alt="Flip Cards logo" />
     <div class="d-flex flex-column w-100">
       <router-view />
     </div>

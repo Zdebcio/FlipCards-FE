@@ -1,22 +1,23 @@
+@use './variables';
 @use './settings';
 
 :root {
-  @media (min-width: map-get(settings.$custom-breakpoints, 'xs')) {
+  @media (min-width: map-get(variables.$custom-breakpoints, 'xs')) {
     --font-size: 10px;
   }
-  @media (min-width: map-get(settings.$custom-breakpoints, 'sm')) {
+  @media (min-width: map-get(variables.$custom-breakpoints, 'sm')) {
     --font-size: 12px;
   }
-  @media (min-width: map-get(settings.$custom-breakpoints, 'md')) {
+  @media (min-width: map-get(variables.$custom-breakpoints, 'md')) {
     --font-size: 16px;
   }
-  @media (min-width: map-get(settings.$custom-breakpoints, 'lg')) {
+  @media (min-width: map-get(variables.$custom-breakpoints, 'lg')) {
     --font-size: 16px;
   }
-  @media (min-width: map-get(settings.$custom-breakpoints, 'xl')) {
+  @media (min-width: map-get(variables.$custom-breakpoints, 'xl')) {
     --font-size: 16px;
   }
-  @media (min-width: map-get(settings.$custom-breakpoints, 'xxl')) {
+  @media (min-width: map-get(variables.$custom-breakpoints, 'xxl')) {
     --font-size: 16px;
   }
 }
