@@ -31,8 +31,8 @@ const getChildrenRoutes = (route: RouteRecordRaw) =>
     :temporary="mobile"
     :model-value="mobile ? open : true"
     :scrim="false"
-    :border="0"
-    :elevation="0"
+    :border="2"
+    :elevation="2"
   >
     <div class="h-100 d-flex flex-column justify-center pb-3">
       <v-list class="flex-grow-1" v-for="route in drawerRoutes" :key="route.name">

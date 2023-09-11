@@ -1,7 +1,7 @@
 import { type VuetifyOptions } from 'vuetify'
 
 const display: VuetifyOptions['display'] = {
-  mobileBreakpoint: 'lg',
+  mobileBreakpoint: 'xl',
   thresholds: {
     xs: 0,
     sm: 360,
