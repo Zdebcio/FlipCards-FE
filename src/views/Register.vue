@@ -4,13 +4,12 @@ import { useI18n } from 'vue-i18n'
 import { AxiosError } from 'axios'
 import { type PublicPathState, useForm } from 'vee-validate'
 
-import paths from '../config/paths'
-import router from '../router'
-import { registerSchema } from '../schemas'
-import { useAuthRegister } from '../services/api'
-
 import Button from '@/components/Button.vue'
 import TextField from '@/components/TextField.vue'
+import paths from '@/config/paths'
+import router from '@/router'
+import { registerSchema } from '@/schemas'
+import { useAuthRegister } from '@/services/api'
 
 const { t } = useI18n()
 const { mutateAsync, isLoading, error, isError } = useAuthRegister()

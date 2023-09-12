@@ -4,7 +4,7 @@ import { type RouteRecordRaw } from 'vue-router'
 
 import { useDisplay } from 'vuetify'
 
-import router from '../../router'
+import router from '@/router'
 
 defineProps<{
   open: boolean

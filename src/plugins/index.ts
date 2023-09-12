@@ -5,17 +5,17 @@
  */
 
 // Types
+import pinia from '@/store'
 import type { App } from 'vue'
 
 // Plugins
 import { VueQueryPlugin } from '@tanstack/vue-query'
 
-import router from '../router'
-import pinia from '../store'
-
 import i18n from './i18n'
 import vuetify from './vuetify'
 import { loadFonts } from './webfontloader'
+
+import router from '@/router'
 
 export function registerPlugins(app: App) {
   loadFonts()
