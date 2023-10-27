@@ -14,6 +14,12 @@ const routes = [
         name: 'Dashboard',
         meta: { drawer: true, exact: true },
         component: () => import('@/views/Dashboard.vue')
+      },
+      {
+        path: 'list/create',
+        name: 'CreateList',
+        meta: { exact: true },
+        component: () => import('@/views/CreateList.vue')
       }
     ]
   },
@@ -47,7 +53,7 @@ router.beforeEach(async to => {
     return { name: 'Login' }
   }
   if (authToken && !to.meta.requiresAuth) {
-    return { name: 'Home' }
+    return { name: 'Dashboard' }
   }
 })
 
