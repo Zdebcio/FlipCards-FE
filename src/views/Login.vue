@@ -50,7 +50,7 @@ const onSubmit = handleSubmit(async (values, actions) => {
 
 <template>
   <form @submit.prevent="onSubmit">
-    <div class="my-7">
+    <div class="mt-4 mb-7">
       <TextField v-bind="email" :placeholder="t('register.fields.email')" name="email" />
       <TextField
         v-bind="password"
