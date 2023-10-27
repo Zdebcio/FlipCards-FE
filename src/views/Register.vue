@@ -58,7 +58,7 @@ const unhandledError = () => {
 
 <template>
   <form @submit.prevent="onSubmit">
-    <div class="my-7">
+    <div class="mt-4 mb-7">
       <TextField v-bind="email" name="email" :placeholder="t('register.fields.email')" />
       <TextField
         v-bind="password"

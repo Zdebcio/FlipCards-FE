@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
 import LogoIcon from '@/components/icons/LogoIcon.vue'
 </script>
 
@@ -11,6 +12,9 @@ import LogoIcon from '@/components/icons/LogoIcon.vue'
   >
     <LogoIcon width="200px" alt="Flip Cards logo" />
     <div class="d-flex flex-column w-100">
+      <div class="align-self-end">
+        <ThemeSwitcher />
+      </div>
       <router-view />
     </div>
   </v-sheet>
