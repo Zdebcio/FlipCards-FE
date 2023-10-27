@@ -3,7 +3,7 @@ import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
 
-import type { Tile } from '../interfaces'
+import type { Tile } from '@/interfaces'
 
 import PlaylistPlayButton from '@/components/PlaylistPlayButton.vue'
 import TilesNav from '@/components/TilesNav.vue'

@@ -14,7 +14,7 @@ defineProps<{
 
 <template>
   <nav class="w-100 d-flex flex-column align-center">
-    <v-list class="w-100" :max-width="thresholds.xl">
+    <v-list class="w-100" :max-width="thresholds.xl" bg-color="transparent">
       <v-container fluid>
         <v-row>
           <v-col

@@ -1,13 +1,17 @@
 import { type VuetifyOptions } from 'vuetify'
 
-import darkTheme from './themes/darkTheme'
-import lightTheme from './themes/lightTheme'
+import { getItem } from '../localStorage'
+
+import dark from './themes/dark'
+import light from './themes/light'
+
+import { Theme } from '@/interfaces'
 
 const theme: VuetifyOptions['theme'] = {
-  defaultTheme: 'lightTheme',
+  defaultTheme: getItem('theme') === Theme.Dark ? Theme.Dark : Theme.Light,
   themes: {
-    lightTheme,
-    darkTheme
+    dark,
+    light
   }
 }
 

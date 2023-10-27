@@ -1,18 +1,6 @@
 {
   "extends": "@tsconfig/node18/tsconfig.json",
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "src/**/*.json",
-    "src/**/**/*.ts",
-    "src/**/**/*.d.ts",
-    "src/**/**/*.tsx",
-    "src/**/**/*.vue",
-    "src/**/**/*.json",
-    "vite.config.ts"
-  ],
+  "include": ["vite.config.*"],
   "compilerOptions": {
     "composite": true,
     "module": "ESNext",

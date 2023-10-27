@@ -15,3 +15,8 @@ export interface Tile {
   xl: number
   content?: Component
 }
+
+export enum Theme {
+  Light = 'light',
+  Dark = 'dark'
+}
