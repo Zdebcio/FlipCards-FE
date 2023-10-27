@@ -2,8 +2,11 @@
 import { useI18n } from 'vue-i18n'
 import { type RouteRecordRaw } from 'vue-router'
 
+import Cookies from 'js-cookie'
+
 import { useDisplay } from 'vuetify'
 
+import paths from '@/config/paths'
 import router from '@/router'
 
 defineProps<{
@@ -18,6 +21,11 @@ const { t } = useI18n()
 const { mobile } = useDisplay()
 
 const handleOpenStatus = (status: boolean) => emit('openDrawer', status)
+
+const handleLogoutClick = () => {
+  Cookies.remove('authToken')
+  router.push(paths.LOGIN)
+}
 
 const drawerRoutes = router.options.routes.filter(route => route.meta?.drawer)
 
@@ -48,7 +56,7 @@ const getChildrenRoutes = (route: RouteRecordRaw) =>
         >
       </v-list>
       <div class="pa-2 flex-grow-0">
-        <v-btn block>{{ t(`drawer.Logout`) }}</v-btn>
+        <v-btn @click="handleLogoutClick" block>{{ t(`drawer.Logout`) }}</v-btn>
       </div>
     </div>
   </v-navigation-drawer>
