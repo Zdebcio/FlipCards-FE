@@ -4,7 +4,6 @@ import { useI18n } from 'vue-i18n'
 import { AxiosError } from 'axios'
 import { type PublicPathState, useForm } from 'vee-validate'
 
-import Button from '@/components/Button.vue'
 import TextField from '@/components/TextField.vue'
 import paths from '@/config/paths'
 import router from '@/router'
@@ -58,7 +57,7 @@ const unhandledError = () => {
 
 <template>
   <form @submit.prevent="onSubmit">
-    <div class="mt-4 mb-7">
+    <div class="mt-4 mb-4">
       <TextField v-bind="email" name="email" :placeholder="t('register.fields.email')" />
       <TextField
         v-bind="password"
@@ -76,13 +75,11 @@ const unhandledError = () => {
         t('validation.other')
       }}</span>
     </div>
-    <div class="d-flex justify-space-between">
-      <Button :to="paths.LOGIN" variant="text">
+    <div class="d-flex justify-space-between align-center">
+      <v-btn-text :to="paths.LOGIN" variant="text">
         {{ t('register.loginViewButton') }}
-      </Button>
-      <Button type="submit" :loading="isLoading" min-width="120">{{
-        t('register.registerButton')
-      }}</Button>
+      </v-btn-text>
+      <v-btn type="submit" :loading="isLoading">{{ t('register.registerButton') }}</v-btn>
     </div>
   </form>
 </template>

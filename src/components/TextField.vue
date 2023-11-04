@@ -10,7 +10,7 @@
     font-size: inherit;
 
     & .v-field__input {
-      padding: 1rem;
+      padding: 0.5rem 1rem;
       min-height: auto;
     }
   }
