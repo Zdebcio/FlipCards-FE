@@ -16,7 +16,7 @@ const routes = [
         component: () => import('@/views/Dashboard.vue')
       },
       {
-        path: 'list/create',
+        path: 'list/new',
         name: 'CreateList',
         meta: { exact: true },
         component: () => import('@/views/CreateList.vue')

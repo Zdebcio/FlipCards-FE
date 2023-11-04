@@ -11,7 +11,8 @@
     "invalidLoginData": "Nieprawidłowy email lub hasło",
     "other": "Coś poszło nie tak",
     "weak_password": "Hasło jest za słabe",
-    "diff_password": "Hasło nie pasuje"
+    "diff_password": "Hasło nie pasuje",
+    "tooLong": "Wartość jest zbyt długa. Maksymalna ilość znaków to {max}"
   },
   "drawer": {
     "Dashboard": "Strona główna",
@@ -41,5 +42,11 @@
     },
     "registerButton": "Utwórz konto",
     "loginViewButton": "Masz Konto? Zaloguj"
+  },
+  "createList": {
+    "title": "Tworzenie listy",
+    "nameLabel": "Nazwa listy:",
+    "namePlaceholder": "Wpisz tutaj...",
+    "button": "Stwórz listę"
   }
 }

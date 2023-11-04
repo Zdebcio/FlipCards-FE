@@ -48,8 +48,7 @@ const tiles: Tile[] = [
     title: t('dashboard.navigation.createList'),
     icon: CreateListIcon,
     bgColor: 'green',
-    // TODO: change when page will create
-    to: '/',
+    to: '/list/new',
     fullWidth: true,
     cols: 12,
     sm: 12,

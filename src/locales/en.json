@@ -11,7 +11,8 @@
     "invalidLoginData": "Incorrect email or password",
     "other": "Something went wrong",
     "weak_password": "Password is too weak",
-    "diff_password": "Password are not matching"
+    "diff_password": "Password are not matching",
+    "tooLong": "The value is too long. The maximum number of characters is {max}"
   },
   "drawer": {
     "Dashboard": "Home",
@@ -41,5 +42,11 @@
     },
     "registerButton": "Register",
     "loginViewButton": "Have account? Login"
+  },
+  "createList": {
+    "title": "Creating a list",
+    "nameLabel": "List name:",
+    "namePlaceholder": "Type here...",
+    "button": "Create List"
   }
 }
