@@ -13,13 +13,21 @@ const { defineComponentBinds, handleSubmit } = useForm({
   validationSchema: listNameSchema
 })
 
-const { mutateAsync, error, isLoading, isError } = useCreateList()
+const { mutateAsync, error, isLoading, isError, reset } = useCreateList()
 const { t } = useI18n()
+
+const displayApiError = () => {
+  if (!isError.value) return ''
+  if (error.value?.response?.status === 422) {
+    return `${t('validation.invalidListName')}. ${t('validation.tooLong', { max: 20 })}`
+  }
+
+  return t('validation.other')
+}
 
 const vuetifyConfig = (state: PublicPathState) => ({
   props: {
-    error: state.errors.length,
-    'error-message': state.errors.join(', ')
+    'error-message': state.errors[0] || displayApiError()
   },
   validateOnValueUpdate: true
 })
@@ -41,11 +49,6 @@ const onSubmit = handleSubmit(async (values, actions) => {
   <div class="px-2">
     <header class="d-flex w-100 justify-space-between align-center py-2">
       <h1>{{ t('createList.title') }}</h1>
-      <div class="d-flex">
-        <v-btn-icon variant="text" color="error">
-          <v-icon color="error" size="x-large">mdi-close</v-icon>
-        </v-btn-icon>
-      </div>
     </header>
     <form @submit.prevent="onSubmit" class="d-flex flex-column align-center py-2">
       <div class="w-100 d-flex flex-column align-center">
@@ -54,6 +57,7 @@ const onSubmit = handleSubmit(async (values, actions) => {
         }}</label>
         <TextField
           v-bind="listName"
+          @change="reset()"
           :error-messages="listName['error-message']"
           id="list-name"
           name="name"
@@ -61,9 +65,13 @@ const onSubmit = handleSubmit(async (values, actions) => {
           class="w-100 list-name-input"
         />
       </div>
-      <v-btn :disabled="!!listName.error" :loading="isLoading" type="submit" class="mt-2">{{
-        t('createList.button')
-      }}</v-btn>
+      <v-btn
+        :disabled="!!listName['error-message']"
+        :loading="isLoading"
+        type="submit"
+        class="mt-2"
+        >{{ t('createList.button') }}</v-btn
+      >
     </form>
   </div>
 </template>

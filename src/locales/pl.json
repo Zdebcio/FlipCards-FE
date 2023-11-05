@@ -12,7 +12,8 @@
     "other": "Coś poszło nie tak",
     "weak_password": "Hasło jest za słabe",
     "diff_password": "Hasło nie pasuje",
-    "tooLong": "Wartość jest zbyt długa. Maksymalna ilość znaków to {max}"
+    "tooLong": "Wartość jest zbyt długa. Maksymalna ilość znaków to {max}",
+    "invalidListName": "Możesz używać tylko liter, cyfr, spacji, myślników i podkreśleń. Spacje nie mogą być używane jako pierwszy ani ostatni znak"
   },
   "drawer": {
     "Dashboard": "Strona główna",

@@ -11,9 +11,9 @@ const LIST_API = `${config.API_URL}/list`
 
 export function useCreateList() {
   return useMutation<string, AxiosError<GenericKeys>, CreateListForm>({
-    mutationKey: ['list/new'],
+    mutationKey: ['list/create'],
     mutationFn: async (fields): Promise<string> => {
-      const { data } = await axios.post(`${LIST_API}/new`, fields)
+      const { data } = await axios.post(`${LIST_API}/create`, fields)
 
       return data
     }
