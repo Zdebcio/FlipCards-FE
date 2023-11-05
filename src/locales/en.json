@@ -11,7 +11,9 @@
     "invalidLoginData": "Incorrect email or password",
     "other": "Something went wrong",
     "weak_password": "Password is too weak",
-    "diff_password": "Password are not matching"
+    "diff_password": "Password are not matching",
+    "tooLong": "The value is too long. The maximum number of characters is {max}",
+    "invalidListName": "You can use only letters, numbers, spaces, hyphens, and underscores. Spaces cannot be used as the first or last character"
   },
   "drawer": {
     "Dashboard": "Home",
@@ -41,5 +43,11 @@
     },
     "registerButton": "Register",
     "loginViewButton": "Have account? Login"
+  },
+  "createList": {
+    "title": "Creating a list",
+    "nameLabel": "List name:",
+    "namePlaceholder": "Type here...",
+    "button": "Create List"
   }
 }

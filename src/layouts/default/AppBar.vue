@@ -30,10 +30,10 @@ const { mobile } = useDisplay()
       <LogoIcon height="50px" />
       <div class="d-flex align-center">
         <ThemeSwitcher class="me-5" />
-        <v-btn icon color="primary" variant="elevated" class="mx-2">
+        <v-btn-icon color="primary" class="mx-2">
           <!-- TODO: integrate when API provided -->
           <v-avatar color="primary">Z</v-avatar>
-        </v-btn>
+        </v-btn-icon>
       </div>
     </div>
   </v-app-bar>

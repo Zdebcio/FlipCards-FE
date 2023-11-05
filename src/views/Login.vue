@@ -3,7 +3,6 @@ import { useI18n } from 'vue-i18n'
 
 import { type PublicPathState, useForm } from 'vee-validate'
 
-import Button from '@/components/Button.vue'
 import TextField from '@/components/TextField.vue'
 import paths from '@/config/paths'
 import router from '@/router'
@@ -50,7 +49,7 @@ const onSubmit = handleSubmit(async (values, actions) => {
 
 <template>
   <form @submit.prevent="onSubmit">
-    <div class="mt-4 mb-7">
+    <div class="mt-4 mb-4">
       <TextField v-bind="email" :placeholder="t('register.fields.email')" name="email" />
       <TextField
         v-bind="password"
@@ -59,11 +58,11 @@ const onSubmit = handleSubmit(async (values, actions) => {
         type="password"
       />
     </div>
-    <div class="d-flex justify-space-between">
-      <Button :to="paths.REGISTER" variant="text">
+    <div class="d-flex justify-space-between align-center">
+      <v-btn-text :to="paths.REGISTER" variant="text">
         {{ t('login.registerViewButton') }}
-      </Button>
-      <Button width="120" type="submit" :loading="isLoading">{{ t('login.loginButton') }}</Button>
+      </v-btn-text>
+      <v-btn type="submit" :loading="isLoading">{{ t('login.loginButton') }}</v-btn>
     </div>
   </form>
 </template>
