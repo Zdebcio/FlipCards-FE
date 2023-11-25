@@ -1,5 +1,6 @@
 import { useMutation } from '@tanstack/vue-query'
 import axios from 'axios'
+import Cookies from 'js-cookie'
 
 import type { GenericKeys } from '@/interfaces'
 import type { CreateListForm } from '@/interfaces/list.interface'
@@ -13,7 +14,11 @@ export function useCreateList() {
   return useMutation<string, AxiosError<GenericKeys>, CreateListForm>({
     mutationKey: ['list/create'],
     mutationFn: async (fields): Promise<string> => {
-      const { data } = await axios.post(`${LIST_API}/create`, fields)
+      const { data } = await axios.post(`${LIST_API}/create`, fields, {
+        headers: {
+          Authorization: `Bearer ${Cookies.get('authToken')}`
+        }
+      })
 
       return data
     }

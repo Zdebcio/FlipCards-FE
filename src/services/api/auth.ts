@@ -21,11 +21,12 @@ export function useAuthLogin() {
 
       const tokenOptions = expiresIn
         ? {
+            secure: true,
             expires: new Date(expiresIn * 1000)
           }
         : {}
 
-      Cookies.set('authToken', token, tokenOptions)
+      Cookies.set('authToken', token.replace(/^Bearer\s/, ''), tokenOptions)
 
       return data
     }
