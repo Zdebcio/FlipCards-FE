@@ -10,6 +10,7 @@ export const listNameSchema = toTypedSchema(
   zod.object({
     name: zod
       .string({ required_error: t('validation.fieldRequired') })
+      .trim()
       .nonempty(t('validation.fieldRequired'))
       .max(20, t('validation.tooLong', { max: 20 }))
       .refine(value => {
