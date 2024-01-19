@@ -1,10 +1,5 @@
 <script lang="ts" setup>
 import MainList from '@/components/MainList.vue'
-
-const { isLoading, isError, data, error } = useQuery({
-  queryKey: ['todos'],
-  queryFn: getTodos
-})
 </script>
 
 <template>
