@@ -20,6 +20,12 @@ const routes = [
         name: 'CreateList',
         meta: { exact: true },
         component: () => import('@/views/CreateList.vue')
+      },
+      {
+        path: 'lists',
+        name: 'UserLists',
+        meta: { exact: true },
+        component: () => import('@/views/UserLists.vue')
       }
     ]
   },

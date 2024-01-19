@@ -46,7 +46,7 @@ const onSubmit = handleSubmit(async (values, actions) => {
 </script>
 
 <template>
-  <div class="px-2">
+  <div class="px-4 py-2">
     <header class="d-flex w-100 justify-space-between align-center py-2">
       <h1>{{ t('createList.title') }}</h1>
     </header>
