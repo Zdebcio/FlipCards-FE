@@ -9,7 +9,9 @@
     "invalid_email": "Nieprawidlowy email",
     "invalid_password": "Nieprawidłowe hasło",
     "invalidLoginData": "Nieprawidłowy email lub hasło",
-    "other": "Coś poszło nie tak",
+    "otherForm": "Coś poszło nie tak",
+    "otherTitle": "Ups! Coś poszło nie tak",
+    "otherSubtitle": "Spróbuj jeszcze raz później",
     "weak_password": "Hasło jest za słabe",
     "diff_password": "Hasło nie pasuje",
     "tooLong": "Wartość jest zbyt długa. Maksymalna ilość znaków to {max}",
@@ -49,5 +51,8 @@
     "nameLabel": "Nazwa listy:",
     "namePlaceholder": "Wpisz tutaj...",
     "button": "Stwórz listę"
+  },
+  "userLists": {
+    "loadMore": "Więcej..."
   }
 }

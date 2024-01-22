@@ -22,7 +22,7 @@ const displayApiError = () => {
     return `${t('validation.invalidListName')}. ${t('validation.tooLong', { max: 20 })}`
   }
 
-  return t('validation.other')
+  return t('validation.otherForm')
 }
 
 const vuetifyConfig = (state: PublicPathState) => ({

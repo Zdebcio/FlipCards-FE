@@ -1,11 +1,27 @@
 <script lang="ts" setup>
+import type { MainLists } from '@/interfaces/list.interface'
+
 import MainList from '@/components/MainList.vue'
+import { useGetUserLists } from '@/services/api'
+
+const { data, error, isError, fetchNextPage, isFetching, isFetchingNextPage, hasNextPage } =
+  useGetUserLists()
+
+const convertDataToMainList = (): MainLists[] => {
+  if (data.value)
+    return data.value.pages.map(({ data, ...props }) => ({
+      data: data.map(({ name, _id }) => ({ title: name, id: _id })),
+      ...props
+    }))
+
+  return []
+}
 </script>
 
 <template>
   <div>
     <header>
-      <h1>LIST 1</h1>
+      <h1>All created lists</h1>
       <div class="header-action">
         <v-btn-icon color="transparent" class="text-h4" size="large" flat>
           <v-icon class="text-h4">mdi-plus</v-icon>
@@ -16,7 +32,15 @@ import MainList from '@/components/MainList.vue'
       </div>
     </header>
     <section>
-      <MainList />
+      <MainList
+        @fetchNextPage="fetchNextPage"
+        :data="convertDataToMainList()"
+        :isFetching="isFetching"
+        :isFetchingNextPage="isFetchingNextPage"
+        :hasNextPage="hasNextPage"
+        :error="error"
+        :isError="isError"
+      />
     </section>
   </div>
 </template>
