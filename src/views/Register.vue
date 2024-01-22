@@ -72,7 +72,7 @@ const unhandledError = () => {
         :placeholder="t('register.fields.confirmPassword')"
       />
       <span v-show="unhandledError()" class="text-caption text-error">{{
-        t('validation.other')
+        t('validation.otherForm')
       }}</span>
     </div>
     <div class="d-flex justify-space-between align-center">

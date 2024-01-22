@@ -13,7 +13,7 @@ const darkTheme: ThemeDefinition = {
     'background-darken-3': '#111517',
     modal: '#333F47',
     accent: '#1A1F23',
-    error: '#F52314',
+    error: '#E71D36',
     success: '#BCED09',
     info: '#0AD3FF',
     warning: '#FFB400',

@@ -11,6 +11,7 @@ import ChartBarIcon from '@/components/icons/ChartBarIcon.vue'
 import CreateListIcon from '@/components/icons/CreateListIcon.vue'
 import ListIcon from '@/components/icons/ListIcon.vue'
 import ReplayIcon from '@/components/icons/ReplayIcon.vue'
+import paths from '@/config/paths'
 
 const tiles: Tile[] = [
   {
@@ -18,7 +19,7 @@ const tiles: Tile[] = [
     icon: ReplayIcon,
     bgColor: 'blue',
     // TODO: change when page will create
-    to: '/',
+    to: paths.HOME,
     cols: 12,
     sm: 12,
     xl: 8,
@@ -29,7 +30,7 @@ const tiles: Tile[] = [
     icon: ListIcon,
     bgColor: 'pink',
     // TODO: change when page will create
-    to: '/',
+    to: paths.USER_LISTS,
     cols: 12,
     sm: 6,
     xl: 4
@@ -48,7 +49,7 @@ const tiles: Tile[] = [
     title: t('dashboard.navigation.createList'),
     icon: CreateListIcon,
     bgColor: 'green',
-    to: '/list/new',
+    to: paths.NEW_LIST,
     fullWidth: true,
     cols: 12,
     sm: 12,

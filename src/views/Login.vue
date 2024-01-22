@@ -22,7 +22,7 @@ const displayApiError = () => {
     return t('validation.invalidLoginData')
   }
 
-  return t('validation.other')
+  return t('validation.otherForm')
 }
 
 const vuetifyConfig = (state: PublicPathState) => ({

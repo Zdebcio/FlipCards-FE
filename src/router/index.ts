@@ -18,8 +18,14 @@ const routes = [
       {
         path: 'list/new',
         name: 'CreateList',
-        meta: { exact: true },
+        meta: { drawer: true, exact: true },
         component: () => import('@/views/CreateList.vue')
+      },
+      {
+        path: 'lists',
+        name: 'UserLists',
+        meta: { drawer: true, exact: true },
+        component: () => import('@/views/UserLists.vue')
       }
     ]
   },

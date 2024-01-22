@@ -9,14 +9,18 @@
     "invalid_email": "Invalid email",
     "invalid_password": "Invalid password",
     "invalidLoginData": "Incorrect email or password",
-    "other": "Something went wrong",
+    "otherForm": "Something went wrong",
+    "otherTitle": "Oops! Something went wrong",
+    "otherSubtitle": "Please try again later",
     "weak_password": "Password is too weak",
     "diff_password": "Password are not matching",
     "tooLong": "The value is too long. The maximum number of characters is {max}",
     "invalidListName": "You can use only letters, numbers, spaces, hyphens, underscores and apostrophes"
   },
   "drawer": {
-    "Dashboard": "Home",
+    "Dashboard": "Dashboard",
+    "CreateList": "Create new list",
+    "UserLists": "Created lists",
     "Logout": "Logout"
   },
   "dashboard": {
@@ -49,5 +53,9 @@
     "nameLabel": "List name:",
     "namePlaceholder": "Type here...",
     "button": "Create List"
+  },
+  "userLists": {
+    "title": "Created lists",
+    "loadMore": "Load more..."
   }
 }
