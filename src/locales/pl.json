@@ -19,6 +19,8 @@
   },
   "drawer": {
     "Dashboard": "Strona główna",
+    "CreateList": "Dodaj nową listę",
+    "UserLists": "Utworzone listy",
     "Logout": "Wyloguj"
   },
   "dashboard": {

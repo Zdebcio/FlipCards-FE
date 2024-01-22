@@ -18,7 +18,9 @@
     "invalidListName": "You can use only letters, numbers, spaces, hyphens, underscores and apostrophes"
   },
   "drawer": {
-    "Dashboard": "Home",
+    "Dashboard": "Dashboard",
+    "CreateList": "Create new list",
+    "UserLists": "Created lists",
     "Logout": "Logout"
   },
   "dashboard": {
