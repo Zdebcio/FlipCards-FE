@@ -53,6 +53,7 @@
     "button": "Create List"
   },
   "userLists": {
+    "title": "Created lists",
     "loadMore": "Load more..."
   }
 }

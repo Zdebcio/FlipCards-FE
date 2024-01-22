@@ -1,8 +1,13 @@
 <script lang="ts" setup>
+import { useI18n } from 'vue-i18n'
+
 import type { MainLists } from '@/interfaces/list.interface'
 
+import MainHeader from '@/components/MainHeader.vue'
 import MainList from '@/components/MainList.vue'
 import { useGetUserLists } from '@/services/api'
+
+const { t } = useI18n()
 
 const { data, error, isError, fetchNextPage, isFetching, isFetchingNextPage, hasNextPage } =
   useGetUserLists()
@@ -20,17 +25,11 @@ const convertDataToMainList = (): MainLists[] => {
 
 <template>
   <div>
-    <header>
-      <h1>All created lists</h1>
-      <div class="header-action">
-        <v-btn-icon color="transparent" class="text-h4" size="large" flat>
-          <v-icon class="text-h4">mdi-plus</v-icon>
-        </v-btn-icon>
-        <v-btn-icon color="primary" size="large" flat>
-          <v-icon class="text-h5">mdi-play</v-icon>
-        </v-btn-icon>
-      </div>
-    </header>
+    <MainHeader :title="t('userLists.title')">
+      <v-btn-icon color="transparent" class="text-h4" size="large" flat>
+        <v-icon class="text-h4">mdi-plus</v-icon>
+      </v-btn-icon>
+    </MainHeader>
     <section>
       <MainList
         @fetchNextPage="fetchNextPage"
