@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
 
-import type { GenericKeys } from '@/interfaces'
-import type { MainLists } from '@/interfaces/list.interface'
+import type { EventType, GenericKeys, MainLists } from '@/interfaces'
 import type { AxiosError } from 'axios'
 const { t } = useI18n()
 
@@ -19,23 +18,48 @@ withDefaults(
 )
 
 defineEmits(['fetchNextPage'])
+
+const clickHandler = (e: EventType, callback: (id: string) => void, id: string) => {
+  e.preventDefault()
+  e.stopPropagation()
+  callback(id)
+}
 </script>
 
 <template>
   <div class="d-flex flex-column" v-if="data">
     <v-list v-for="(group, index) in data" :key="index">
-      <v-list-item v-for="item in group.data" :key="item.id" class="py-2" :value="item">
+      <v-list-item
+        v-for="item in group.data"
+        :key="item.id"
+        class="py-2"
+        :value="item"
+        :to="item.hrefItem"
+        @click="e => item.clickItem && clickHandler(e, item.clickItem, item.id)"
+      >
         <v-list-item-title>{{ item.title }}</v-list-item-title>
         <v-list-item-subtitle v-if="item.subtitle" class="font-italic">
           {{ item.subtitle }}
         </v-list-item-subtitle>
-        <template v-slot:prepend>
-          <v-btn-icon color="transparent" size="small" flat>
+        <template v-if="item.editItem || item.hrefEdit" v-slot:prepend>
+          <v-btn-icon
+            color="transparent"
+            size="small"
+            flat
+            :to="item.hrefEdit"
+            @click="(e: EventType) => item.editItem && clickHandler(e, item.editItem, item.id)"
+          >
             <v-icon class="text-h5">mdi-pencil</v-icon>
           </v-btn-icon>
         </template>
-        <template v-slot:append>
-          <v-btn-icon color="transparent" size="small" flat>
+        <template v-if="item.removeItem || item.hrefRemove" v-slot:append>
+          <v-btn-icon
+            color="transparent"
+            size="small"
+            flat
+            :to="item.hrefRemove"
+            @click="(e: EventType) => item.removeItem && clickHandler(e, item.removeItem, item.id)"
+          >
             <v-icon class="text-h5" color="error">mdi-delete</v-icon>
           </v-btn-icon>
         </template>

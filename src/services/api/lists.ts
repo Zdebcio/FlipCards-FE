@@ -1,10 +1,9 @@
-import { useInfiniteQuery, useMutation } from '@tanstack/vue-query'
+import { useInfiniteQuery, useMutation, useQuery } from '@tanstack/vue-query'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
 import type { GenericKeys } from '@/interfaces'
-import type { GetFlashcardsList } from '@/interfaces/flashcard.interface'
-import type { CreateListForm, GetUserLists } from '@/interfaces/list.interface'
+import type { CreateListForm, GetUserLists, UserList } from '@/interfaces/list.interface'
 import type { AxiosError } from 'axios'
 
 import config from '@/config'
@@ -51,9 +50,9 @@ export function useGetUserLists() {
 }
 
 export function useGetList(listID: string | string[]) {
-  return useInfiniteQuery<GetFlashcardsList, AxiosError<GenericKeys>>({
+  return useQuery<UserList, AxiosError<GenericKeys>>({
     queryKey: ['lists/getList'],
-    queryFn: async ({ pageParam = 0 }): Promise<GetFlashcardsList> => {
+    queryFn: async ({ pageParam = 0 }): Promise<UserList> => {
       const { data } = await axios.get(`${LISTS_API}/${listID}`, {
         params: {
           skip: defaults.limit * pageParam,
@@ -65,10 +64,6 @@ export function useGetList(listID: string | string[]) {
       })
 
       return data
-    },
-
-    getNextPageParam: (lastPage, pages) => {
-      if (lastPage.count > lastPage.skip + lastPage.limit) return pages.length
     }
   })
 }

@@ -16,6 +16,12 @@ const routes = [
         component: () => import('@/views/Dashboard.vue')
       },
       {
+        path: 'list/:listID',
+        name: 'Flashcards List',
+        meta: { exact: true },
+        component: () => import('@/views/FlashcardsList.vue')
+      },
+      {
         path: 'list/new',
         name: 'CreateList',
         meta: { drawer: true, exact: true },

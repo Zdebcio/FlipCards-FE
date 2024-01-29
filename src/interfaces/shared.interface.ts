@@ -20,3 +20,27 @@ export enum Theme {
   Light = 'light',
   Dark = 'dark'
 }
+
+export interface PaginationData {
+  count: number
+  limit: number
+  skip: number
+}
+
+export interface MainListDataItem {
+  title: string
+  subtitle?: string
+  id: string
+  hrefItem?: string
+  hrefEdit?: string
+  hrefRemove?: string
+  clickItem?: (id: string) => void
+  editItem?: (id: string) => void
+  removeItem?: (id: string) => void
+}
+
+export interface MainLists extends PaginationData {
+  data: MainListDataItem[]
+}
+
+export type EventType = MouseEvent | KeyboardEvent
