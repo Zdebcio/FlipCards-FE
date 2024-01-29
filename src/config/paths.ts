@@ -4,5 +4,6 @@ export default {
   LOGIN: '/auth/login',
   REGISTER: '/auth/register',
   USER_LISTS: '/lists',
-  NEW_LIST: '/list/new'
+  NEW_LIST: '/list/new',
+  LIST: '/list'
 }

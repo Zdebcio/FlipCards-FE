@@ -1,25 +1,26 @@
 <script lang="ts" setup>
-import { useI18n } from 'vue-i18n'
+import { useRoute } from 'vue-router'
 
 import type { MainLists } from '@/interfaces'
 
 import MainHeader from '@/components/MainHeader.vue'
 import MainList from '@/components/MainList.vue'
-import paths from '@/config/paths'
-import { useGetUserLists } from '@/services/api'
+import { useGetFlashcards, useGetList } from '@/services/api'
 
-const { t } = useI18n()
+const route = useRoute()
+
+const listInfo = useGetList(route.params.listID)
 
 const { data, error, isError, fetchNextPage, isFetching, isFetchingNextPage, hasNextPage } =
-  useGetUserLists()
+  useGetFlashcards(route.params.listID)
 
 const convertDataToMainList = (): MainLists[] => {
   if (data.value)
     return data.value.pages.map(({ data, ...props }) => ({
-      data: data.map(({ name, _id }) => ({
-        title: name,
-        id: _id,
-        hrefItem: `${paths.LIST}/${_id}`
+      data: data.map(({ forwardText, backwardText, _id }) => ({
+        title: forwardText,
+        subtitle: backwardText,
+        id: _id
       })),
       ...props
     }))
@@ -30,9 +31,12 @@ const convertDataToMainList = (): MainLists[] => {
 
 <template>
   <div>
-    <MainHeader :title="t('userLists.title')">
+    <MainHeader :title="listInfo.data.value?.name ?? ''">
       <v-btn-icon color="transparent" class="text-h4" size="large" flat>
         <v-icon class="text-h4">mdi-plus</v-icon>
+      </v-btn-icon>
+      <v-btn-icon color="primary" size="large" flat>
+        <v-icon class="text-h5">mdi-play</v-icon>
       </v-btn-icon>
     </MainHeader>
     <section>
@@ -48,3 +52,5 @@ const convertDataToMainList = (): MainLists[] => {
     </section>
   </div>
 </template>
+
+<style lang="scss" scoped></style>
