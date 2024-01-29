@@ -34,6 +34,9 @@ const convertDataToMainList = (): MainLists[] => {
     <MainHeader :title="listInfo.data.value?.name ?? ''">
       <v-btn-icon color="transparent" class="text-h4" size="large" flat>
         <v-icon class="text-h4">mdi-plus</v-icon>
+        <v-btn-icon color="primary" size="large" flat>
+          <v-icon class="text-h5">mdi-play</v-icon>
+        </v-btn-icon>
       </v-btn-icon>
     </MainHeader>
     <section>
