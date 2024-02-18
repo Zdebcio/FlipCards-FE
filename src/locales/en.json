@@ -15,7 +15,9 @@
     "weak_password": "Password is too weak",
     "diff_password": "Password are not matching",
     "tooLong": "The value is too long. The maximum number of characters is {max}",
-    "invalidListName": "You can use only letters, numbers, spaces, hyphens, underscores and apostrophes"
+    "invalidListName": "You can use only letters, numbers, spaces, hyphens, underscores and apostrophes",
+    "minItems": "Must be related to minimum {min} items",
+    "unique": "Must be an array of unique items"
   },
   "drawer": {
     "Dashboard": "Dashboard",
@@ -57,5 +59,13 @@
   "userLists": {
     "title": "Created lists",
     "loadMore": "Load more..."
+  },
+  "createFlashcard": {
+    "title": "New card",
+    "listsLabel": "Selected lists:",
+    "forwardLabel": "Front card text:",
+    "backwardLabel": "Back card text:",
+    "namePlaceholder": "Type here...",
+    "button": "Create List"
   }
 }

@@ -1,9 +1,9 @@
-import { useInfiniteQuery } from '@tanstack/vue-query'
+import { useInfiniteQuery, useMutation } from '@tanstack/vue-query'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
 import type { GenericKeys } from '@/interfaces'
-import type { GetFlashcardsList } from '@/interfaces/flashcard.interface'
+import type { CreateFlashcardForm, GetFlashcardsList } from '@/interfaces/flashcard.interface'
 import type { AxiosError } from 'axios'
 
 import config from '@/config'
@@ -30,6 +30,21 @@ export function useGetFlashcards(listID?: string | string[]) {
     },
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.count > lastPage.skip + lastPage.limit) return pages.length
+    }
+  })
+}
+
+export function useCreateFlashcard() {
+  return useMutation<string, AxiosError<GenericKeys>, CreateFlashcardForm>({
+    mutationKey: ['lists/create'],
+    mutationFn: async (fields): Promise<string> => {
+      const { data } = await axios.post(`${FLASHCARDS_API}/create`, fields, {
+        headers: {
+          Authorization: `Bearer ${Cookies.get('authToken')}`
+        }
+      })
+
+      return data
     }
   })
 }

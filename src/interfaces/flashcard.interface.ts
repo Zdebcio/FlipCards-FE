@@ -12,3 +12,9 @@ export interface Flashcard {
 export interface GetFlashcardsList extends PaginationData {
   data: Flashcard[]
 }
+
+export interface CreateFlashcardForm {
+  forwardText: string
+  backwardText: string
+  listIDs: string[]
+}

@@ -15,7 +15,9 @@
     "weak_password": "Hasło jest za słabe",
     "diff_password": "Hasło nie pasuje",
     "tooLong": "Wartość jest zbyt długa. Maksymalna ilość znaków to {max}",
-    "invalidListName": "Możesz używać tylko liter, cyfr, spacji, myślników, podkreśleń i apostrofów"
+    "invalidListName": "Możesz używać tylko liter, cyfr, spacji, myślników, podkreśleń i apostrofów",
+    "minItems": "Muszą być przypisane {min} elementy",
+    "unique": "Elementy nie mogą się powtarzać"
   },
   "drawer": {
     "Dashboard": "Strona główna",
@@ -57,5 +59,13 @@
   "userLists": {
     "title": "Stworzone listy",
     "loadMore": "Więcej..."
+  },
+  "createFlashcard": {
+    "title": "Nowa karta",
+    "listsLabel": "Wybrane listy:",
+    "forwardLabel": "Przód karty:",
+    "backwardLabel": "Tył karty:",
+    "namePlaceholder": "Type here...",
+    "button": "Create List"
   }
 }
