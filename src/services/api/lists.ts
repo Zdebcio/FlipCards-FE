@@ -1,3 +1,5 @@
+import type { Ref } from 'vue'
+
 import { useInfiniteQuery, useMutation, useQuery } from '@tanstack/vue-query'
 import axios from 'axios'
 import Cookies from 'js-cookie'
@@ -26,9 +28,9 @@ export function useCreateList() {
   })
 }
 
-export function useGetUserLists() {
+export function useGetInfiniteUserLists() {
   return useInfiniteQuery<GetUserLists, AxiosError<GenericKeys>>({
-    queryKey: ['lists/getUserLists'],
+    queryKey: ['lists/getInfiniteUserLists'],
     queryFn: async ({ pageParam = 0 }): Promise<GetUserLists> => {
       const { data } = await axios.get(LISTS_API, {
         params: {
@@ -49,15 +51,39 @@ export function useGetUserLists() {
   })
 }
 
+interface GetUserListsPayload {
+  name?: Ref<string> | string
+  limit?: Ref<string> | number
+  skip?: Ref<string> | number
+}
+
+export function useGetUserLists({ name, limit, skip }: GetUserListsPayload) {
+  return useQuery({
+    queryKey: ['lists/getUserLists', name, limit, skip],
+    queryFn: async ({ queryKey }): Promise<GetUserLists> => {
+      const [, name, limit, skip] = queryKey
+
+      const { data } = await axios.get(LISTS_API, {
+        params: {
+          name: name || '',
+          limit: limit || defaults.limit,
+          skip: skip || defaults.skip
+        },
+        headers: {
+          Authorization: `Bearer ${Cookies.get('authToken')}`
+        }
+      })
+
+      return data
+    }
+  })
+}
+
 export function useGetList(listID: string | string[]) {
   return useQuery<UserList, AxiosError<GenericKeys>>({
     queryKey: ['lists/getList'],
-    queryFn: async ({ pageParam = 0 }): Promise<UserList> => {
+    queryFn: async (): Promise<UserList> => {
       const { data } = await axios.get(`${LISTS_API}/${listID}`, {
-        params: {
-          skip: defaults.limit * pageParam,
-          limit: defaults.limit
-        },
         headers: {
           Authorization: `Bearer ${Cookies.get('authToken')}`
         }

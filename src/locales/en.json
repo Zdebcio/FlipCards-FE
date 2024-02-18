@@ -65,7 +65,9 @@
     "listsLabel": "Selected lists:",
     "forwardLabel": "Front card text:",
     "backwardLabel": "Back card text:",
-    "namePlaceholder": "Type here...",
+    "listsPlaceholder": "Choose lists...",
+    "forwardPlaceholder": "Type here...",
+    "backwardPlaceholder": "Type here...",
     "button": "Create List"
   }
 }

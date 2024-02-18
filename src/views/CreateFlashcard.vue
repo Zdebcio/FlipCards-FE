@@ -1,20 +1,28 @@
 <script lang="ts" setup>
+import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import { type PublicPathState, useForm } from 'vee-validate'
 
-import TextField from '@/components/TextField.vue'
+import AutocompleteField from '@/components/AutocompleteField.vue'
 import Textarea from '@/components/Textarea.vue'
-import paths from '@/config/paths'
 import router from '@/router'
 import { createFlashcardSchema } from '@/schemas'
-import { useCreateFlashcard } from '@/services/api'
+import { useCreateFlashcard, useGetUserLists } from '@/services/api'
 
 const { defineComponentBinds, handleSubmit, errors } = useForm({
   validationSchema: createFlashcardSchema
 })
 
+const autocompleteValue = ref('')
+
 const { mutateAsync, error, isLoading, isError, reset } = useCreateFlashcard()
+const {
+  data,
+  isLoading: isListLoading,
+  isInitialLoading
+} = useGetUserLists({ name: autocompleteValue, limit: 5 })
+
 const { t } = useI18n()
 
 const displayApiError = () => {
@@ -44,6 +52,7 @@ const onSubmit = handleSubmit(async (values, actions) => {
     actions.resetForm()
     router.back()
   } catch (error) {
+    // TODO: handle error
     console.log(error)
   }
 })
@@ -57,27 +66,34 @@ const onSubmit = handleSubmit(async (values, actions) => {
     <v-form @submit.prevent="onSubmit" class="d-flex flex-column align-center py-2 form">
       <div class="d-flex flex-column w-100">
         <label for="list-ids" class="text-h6 mb-2">{{ t('createFlashcard.listsLabel') }}</label>
-        <TextField
-          v-bind="listIDs"
-          @change="reset()"
-          :error-messages="listIDs['error-message']"
+        <!-- TODO: handle error messages -->
+        <AutocompleteField
+          :items="data?.data"
+          :loading="isListLoading"
+          :placeholder="t('createFlashcard.listsPlaceholder')"
+          @update:search="(val: string) => (autocompleteValue = val)"
+          chips
           id="list-ids"
+          item-title="name"
+          multiple
           name="listIDs"
-          :placeholder="t('createList.namePlaceholder')"
-          class="w-100 list-name-input"
-        />
+          no-filter
+          v-bind="listIDs"
+          :error-messages="listIDs['error-message']"
+        ></AutocompleteField>
       </div>
       <div class="d-flex flex-column w-100">
         <label for="forward-text" class="text-h6 mb-2">
           {{ t('createFlashcard.forwardLabel') }}
         </label>
+        <!-- TODO: handle error messages -->
         <Textarea
           v-bind="forwardText"
           @change="reset()"
           :error-messages="forwardText['error-message']"
           id="forward-text"
           name="forwardText"
-          :placeholder="t('createList.namePlaceholder')"
+          :placeholder="t('createFlashcard.forwardPlaceholder')"
           class="w-100 list-name-input"
         />
       </div>
@@ -85,19 +101,20 @@ const onSubmit = handleSubmit(async (values, actions) => {
         <label for="backward-text" class="text-h6 mb-2">
           {{ t('createFlashcard.backwardLabel') }}
         </label>
+        <!-- TODO: handle error messages -->
         <Textarea
           v-bind="backwardText"
           @change="reset()"
           :error-messages="backwardText['error-message']"
           id="backward-text"
           name="backwardText"
-          :placeholder="t('createList.namePlaceholder')"
+          :placeholder="t('createFlashcard.backwardPlaceholder')"
           class="w-100 list-name-input"
         />
       </div>
       <v-btn
         :disabled="!!Object.keys(errors).length"
-        :loading="isLoading"
+        :loading="isLoading && !isInitialLoading"
         type="submit"
         class="mt-2"
         >{{ t('createList.button') }}

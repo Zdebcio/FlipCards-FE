@@ -6,12 +6,12 @@ import type { MainLists } from '@/interfaces'
 import MainHeader from '@/components/MainHeader.vue'
 import MainList from '@/components/MainList.vue'
 import paths from '@/config/paths'
-import { useGetUserLists } from '@/services/api'
+import { useGetInfiniteUserLists } from '@/services/api'
 
 const { t } = useI18n()
 
 const { data, error, isError, fetchNextPage, isFetching, isFetchingNextPage, hasNextPage } =
-  useGetUserLists()
+  useGetInfiniteUserLists()
 
 const convertDataToMainList = (): MainLists[] => {
   if (data.value)

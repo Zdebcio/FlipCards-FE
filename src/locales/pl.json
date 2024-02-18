@@ -65,7 +65,9 @@
     "listsLabel": "Wybrane listy:",
     "forwardLabel": "Przód karty:",
     "backwardLabel": "Tył karty:",
-    "namePlaceholder": "Type here...",
+    "listsPlaceholder": "Wybierz listy...",
+    "forwardPlaceholder": "Wpisz tutaj...",
+    "backwardPlaceholder": "Wpisz tutaj...",
     "button": "Create List"
   }
 }
