@@ -6,22 +6,19 @@ defineProps<{
 </script>
 
 <template>
-  <v-btn-icon
-    :disabled="!visible"
-    color="transparent"
-    flat
-    size="x-large"
-    class="mx-2"
-    id="menu-btn"
-    icon
-  >
-    <v-icon
-      v-show="!!visible"
-      id="menu-icon"
-      :icon="open ? 'mdi-window-close' : 'mdi-menu'"
+  <div>
+    <v-btn-icon
+      v-if="visible"
+      color="transparent"
+      flat
       size="x-large"
-    ></v-icon>
-  </v-btn-icon>
+      class="mx-2"
+      id="menu-btn"
+      icon
+    >
+      <v-icon id="menu-icon" :icon="open ? 'mdi-window-close' : 'mdi-menu'" size="x-large"></v-icon>
+    </v-btn-icon>
+  </div>
 </template>
 
 <style lang="scss" scoped>
