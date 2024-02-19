@@ -16,7 +16,7 @@ const { defineComponentBinds, handleSubmit, errors } = useForm({
 
 const autocompleteValue = ref('')
 
-const { mutateAsync, error, isLoading, isError, reset } = useCreateFlashcard()
+const { mutate, isLoading, isError, reset } = useCreateFlashcard()
 const {
   data,
   isLoading: isListLoading,
@@ -25,18 +25,9 @@ const {
 
 const { t } = useI18n()
 
-const displayApiError = () => {
-  if (!isError.value) return ''
-  if (error.value?.response?.status === 422) {
-    return `${t('validation.invalidListName')}. ${t('validation.tooLong', { max: 20 })}`
-  }
-
-  return t('validation.otherForm')
-}
-
 const vuetifyConfig = (state: PublicPathState) => ({
   props: {
-    'error-message': state.errors[0] || displayApiError()
+    'error-message': state.errors[0]
   },
   validateOnValueUpdate: true
 })
@@ -46,15 +37,12 @@ const forwardText = defineComponentBinds('forwardText', vuetifyConfig)
 const backwardText = defineComponentBinds('backwardText', vuetifyConfig)
 
 const onSubmit = handleSubmit(async (values, actions) => {
-  console.log(errors.value)
-  try {
-    await mutateAsync(values)
-    actions.resetForm()
-    router.back()
-  } catch (error) {
-    // TODO: handle error
-    console.log(error)
-  }
+  mutate(values, {
+    onSuccess: () => {
+      actions.resetForm()
+      router.back()
+    }
+  })
 })
 </script>
 
@@ -66,7 +54,6 @@ const onSubmit = handleSubmit(async (values, actions) => {
     <v-form @submit.prevent="onSubmit" class="d-flex flex-column align-center py-2 form">
       <div class="d-flex flex-column w-100">
         <label for="list-ids" class="text-h6 mb-2">{{ t('createFlashcard.listsLabel') }}</label>
-        <!-- TODO: handle error messages -->
         <AutocompleteField
           :error-messages="listIDs['error-message']"
           :items="data?.data"
@@ -89,7 +76,6 @@ const onSubmit = handleSubmit(async (values, actions) => {
         <label for="forward-text" class="text-h6 mb-2">
           {{ t('createFlashcard.forwardLabel') }}
         </label>
-        <!-- TODO: handle error messages -->
         <Textarea
           :error-messages="forwardText['error-message']"
           :placeholder="t('createFlashcard.forwardPlaceholder')"
@@ -104,7 +90,6 @@ const onSubmit = handleSubmit(async (values, actions) => {
         <label for="backward-text" class="text-h6 mb-2">
           {{ t('createFlashcard.backwardLabel') }}
         </label>
-        <!-- TODO: handle error messages -->
         <Textarea
           :error-messages="backwardText['error-message']"
           :placeholder="t('createFlashcard.backwardPlaceholder')"
@@ -115,6 +100,15 @@ const onSubmit = handleSubmit(async (values, actions) => {
           v-bind="backwardText"
         />
       </div>
+      <v-alert
+        :text="t('validation.otherSubtitle')"
+        :title="t('validation.otherTitle')"
+        border="start"
+        class="w-100 mb-5"
+        type="error"
+        v-if="isError"
+        variant="tonal"
+      ></v-alert>
       <v-btn
         :disabled="!!Object.keys(errors).length"
         :loading="isLoading && !isInitialLoading"

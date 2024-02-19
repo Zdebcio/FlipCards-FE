@@ -19,7 +19,7 @@ export const createFlashcardSchema = toTypedSchema(
       .max(250, t('validation.tooLong', { max: 250 })),
     listIDs: zod
       .array(zod.string())
-      .min(1, t('validation.minItems', { max: 1 }))
+      .min(1, t('validation.minItems', { min: 1 }))
       .refine(items => new Set(items).size === items.length, {
         message: t('validation.unique')
       })
