@@ -1,21 +1,25 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
+import type { Ref } from 'vue'
+import { ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
+import { useRoute } from 'vue-router'
 
 import { type PublicPathState, useForm } from 'vee-validate'
+
+import type { UserList } from '@/interfaces/list.interface'
 
 import AutocompleteField from '@/components/AutocompleteField.vue'
 import Textarea from '@/components/Textarea.vue'
 import router from '@/router'
 import { createFlashcardSchema } from '@/schemas'
-import { useCreateFlashcard, useGetUserLists } from '@/services/api'
+import { useCreateFlashcard, useGetList, useGetUserLists } from '@/services/api'
 
-const { defineComponentBinds, handleSubmit, errors } = useForm({
-  validationSchema: createFlashcardSchema
-})
+const { t } = useI18n()
+const route = useRoute()
 
 const autocompleteValue = ref('')
 
+const { data: listData, isFetchedAfterMount } = useGetList(route.query.listID?.toString())
 const { mutate, isLoading, isError, reset } = useCreateFlashcard()
 const {
   data,
@@ -23,7 +27,25 @@ const {
   isInitialLoading
 } = useGetUserLists({ name: autocompleteValue, limit: 5 })
 
-const { t } = useI18n()
+const setInitialListData = (data: Ref<UserList> | Ref<undefined>) =>
+  data.value ? [{ _id: data.value?._id, name: data.value?.name }] : []
+
+const { defineComponentBinds, handleSubmit, errors, resetForm } = useForm({
+  validationSchema: createFlashcardSchema,
+  initialValues: {
+    lists: setInitialListData(listData)
+  }
+})
+
+watch([isFetchedAfterMount], () => {
+  if (isFetchedAfterMount) {
+    resetForm({
+      values: {
+        lists: setInitialListData(listData)
+      }
+    })
+  }
+})
 
 const vuetifyConfig = (state: PublicPathState) => ({
   props: {
@@ -32,7 +54,7 @@ const vuetifyConfig = (state: PublicPathState) => ({
   validateOnValueUpdate: true
 })
 
-const listIDs = defineComponentBinds('listIDs', vuetifyConfig)
+const lists = defineComponentBinds('lists', vuetifyConfig)
 const forwardText = defineComponentBinds('forwardText', vuetifyConfig)
 const backwardText = defineComponentBinds('backwardText', vuetifyConfig)
 
@@ -55,7 +77,7 @@ const onSubmit = handleSubmit(async (values, actions) => {
       <div class="d-flex flex-column w-100">
         <label for="list-ids" class="text-h6 mb-2">{{ t('createFlashcard.listsLabel') }}</label>
         <AutocompleteField
-          :error-messages="listIDs['error-message']"
+          :error-messages="lists['error-message']"
           :items="data?.data"
           :loading="isListLoading"
           :placeholder="t('createFlashcard.listsPlaceholder')"
@@ -66,10 +88,11 @@ const onSubmit = handleSubmit(async (values, actions) => {
           id="list-ids"
           item-title="name"
           item-value="_id"
+          return-object
           multiple
-          name="listIDs"
+          name="lists"
           no-filter
-          v-bind="listIDs"
+          v-bind="lists"
         />
       </div>
       <div class="d-flex flex-column w-100">

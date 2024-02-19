@@ -37,7 +37,8 @@ const routes = [
         path: 'flashcard/new',
         name: 'CreateFlashcard',
         meta: { drawer: true, exact: true },
-        component: () => import('@/views/CreateFlashcard.vue')
+        component: () => import('@/views/CreateFlashcard.vue'),
+        props: true
       }
     ]
   },

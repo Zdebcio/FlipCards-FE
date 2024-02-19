@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <v-autocomplete item-value="" class="autocomplete-field text-body-1"></v-autocomplete>
+  <v-autocomplete class="autocomplete-field text-body-1"></v-autocomplete>
 </template>
 
 <style lang="scss" scoped>

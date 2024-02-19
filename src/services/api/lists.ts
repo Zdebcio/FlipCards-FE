@@ -79,7 +79,7 @@ export function useGetUserLists({ name, limit, skip }: GetUserListsPayload) {
   })
 }
 
-export function useGetList(listID: string | string[]) {
+export function useGetList(listID?: string | string[]) {
   return useQuery<UserList, AxiosError<GenericKeys>>({
     queryKey: ['lists/getList'],
     queryFn: async (): Promise<UserList> => {
@@ -90,6 +90,7 @@ export function useGetList(listID: string | string[]) {
       })
 
       return data
-    }
+    },
+    enabled: !!listID
   })
 }

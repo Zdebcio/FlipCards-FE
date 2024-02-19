@@ -5,5 +5,6 @@ export default {
   REGISTER: '/auth/register',
   USER_LISTS: '/lists',
   NEW_LIST: '/list/new',
-  LIST: '/list'
+  LIST: '/list',
+  NEW_FLASHCARD: '/flashcard/new'
 }

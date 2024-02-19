@@ -38,11 +38,15 @@ export function useCreateFlashcard() {
   return useMutation<string, AxiosError<GenericKeys>, CreateFlashcardForm>({
     mutationKey: ['lists/create'],
     mutationFn: async (fields): Promise<string> => {
-      const { data } = await axios.post(`${FLASHCARDS_API}/create`, fields, {
-        headers: {
-          Authorization: `Bearer ${Cookies.get('authToken')}`
+      const { data } = await axios.post(
+        `${FLASHCARDS_API}/create`,
+        { listIDs: fields.lists.map(({ _id }) => _id), ...fields },
+        {
+          headers: {
+            Authorization: `Bearer ${Cookies.get('authToken')}`
+          }
         }
-      })
+      )
 
       return data
     }
