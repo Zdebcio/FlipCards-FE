@@ -22,6 +22,7 @@
   "drawer": {
     "Dashboard": "Dashboard",
     "CreateList": "Create new list",
+    "CreateFlashcard": "Create flashcard",
     "UserLists": "Created lists",
     "Logout": "Logout"
   },

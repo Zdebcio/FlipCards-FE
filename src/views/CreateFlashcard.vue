@@ -68,19 +68,22 @@ const onSubmit = handleSubmit(async (values, actions) => {
         <label for="list-ids" class="text-h6 mb-2">{{ t('createFlashcard.listsLabel') }}</label>
         <!-- TODO: handle error messages -->
         <AutocompleteField
+          :error-messages="listIDs['error-message']"
           :items="data?.data"
           :loading="isListLoading"
           :placeholder="t('createFlashcard.listsPlaceholder')"
-          @update:search="(val: string) => (autocompleteValue = val)"
+          :search="autocompleteValue"
+          @update:search="val => (autocompleteValue = val)"
           chips
+          closable-chips
           id="list-ids"
           item-title="name"
+          item-value="_id"
           multiple
           name="listIDs"
           no-filter
           v-bind="listIDs"
-          :error-messages="listIDs['error-message']"
-        ></AutocompleteField>
+        />
       </div>
       <div class="d-flex flex-column w-100">
         <label for="forward-text" class="text-h6 mb-2">
@@ -88,13 +91,13 @@ const onSubmit = handleSubmit(async (values, actions) => {
         </label>
         <!-- TODO: handle error messages -->
         <Textarea
-          v-bind="forwardText"
-          @change="reset()"
           :error-messages="forwardText['error-message']"
+          :placeholder="t('createFlashcard.forwardPlaceholder')"
+          @change="reset()"
+          class="w-100 list-name-input"
           id="forward-text"
           name="forwardText"
-          :placeholder="t('createFlashcard.forwardPlaceholder')"
-          class="w-100 list-name-input"
+          v-bind="forwardText"
         />
       </div>
       <div class="d-flex flex-column w-100">
@@ -103,21 +106,22 @@ const onSubmit = handleSubmit(async (values, actions) => {
         </label>
         <!-- TODO: handle error messages -->
         <Textarea
-          v-bind="backwardText"
-          @change="reset()"
           :error-messages="backwardText['error-message']"
+          :placeholder="t('createFlashcard.backwardPlaceholder')"
+          @change="reset()"
+          class="w-100 list-name-input"
           id="backward-text"
           name="backwardText"
-          :placeholder="t('createFlashcard.backwardPlaceholder')"
-          class="w-100 list-name-input"
+          v-bind="backwardText"
         />
       </div>
       <v-btn
         :disabled="!!Object.keys(errors).length"
         :loading="isLoading && !isInitialLoading"
-        type="submit"
         class="mt-2"
-        >{{ t('createList.button') }}
+        type="submit"
+      >
+        {{ t('createList.button') }}
       </v-btn>
     </v-form>
   </div>

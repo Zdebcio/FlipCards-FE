@@ -22,6 +22,7 @@
   "drawer": {
     "Dashboard": "Strona główna",
     "CreateList": "Dodaj nową listę",
+    "CreateFlashcard": "Stwórz fiszkę",
     "UserLists": "Utworzone listy",
     "Logout": "Wyloguj"
   },
