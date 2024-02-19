@@ -1,7 +1,8 @@
 {
   "$vuetify": {
     "noDataText": "Brak danych",
-    "open": "Otwórz"
+    "open": "Otwórz",
+    "close": "Zamknij"
   },
   "validation": {
     "conflict_email": "Email już istnieje",
