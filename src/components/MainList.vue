@@ -66,10 +66,13 @@ const clickHandler = (e: EventType, callback: (id: string) => void, id: string) 
       </v-list-item>
     </v-list>
     <v-alert
-      v-if="isError"
-      type="error"
-      :title="t('validation.otherTitle')"
       :text="t('validation.otherSubtitle')"
+      :title="t('validation.otherTitle')"
+      border="start"
+      class="w-100 mb-5"
+      type="error"
+      v-if="isError"
+      variant="tonal"
     ></v-alert>
     <v-btn
       class="align-self-center mx-2 my-4"

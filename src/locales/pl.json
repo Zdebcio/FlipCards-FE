@@ -1,8 +1,9 @@
 {
   "$vuetify": {
-    "noDataText": "No data"
+    "noDataText": "Brak danych",
+    "open": "Otwórz",
+    "close": "Zamknij"
   },
-  "hello": "Hello World",
   "validation": {
     "conflict_email": "Email już istnieje",
     "fieldRequired": "Pole jest wymagane",
@@ -15,11 +16,14 @@
     "weak_password": "Hasło jest za słabe",
     "diff_password": "Hasło nie pasuje",
     "tooLong": "Wartość jest zbyt długa. Maksymalna ilość znaków to {max}",
-    "invalidListName": "Możesz używać tylko liter, cyfr, spacji, myślników, podkreśleń i apostrofów"
+    "invalidListName": "Możesz używać tylko liter, cyfr, spacji, myślników, podkreśleń i apostrofów",
+    "minItems": "Muszą być przypisane {min} elementy",
+    "unique": "Elementy nie mogą się powtarzać"
   },
   "drawer": {
     "Dashboard": "Strona główna",
     "CreateList": "Dodaj nową listę",
+    "CreateFlashcard": "Stwórz fiszkę",
     "UserLists": "Utworzone listy",
     "Logout": "Wyloguj"
   },
@@ -57,5 +61,15 @@
   "userLists": {
     "title": "Stworzone listy",
     "loadMore": "Więcej..."
+  },
+  "createFlashcard": {
+    "title": "Nowa karta",
+    "listsLabel": "Wybrane listy:",
+    "forwardLabel": "Przód karty:",
+    "backwardLabel": "Tył karty:",
+    "listsPlaceholder": "Wybierz listy...",
+    "forwardPlaceholder": "Wpisz tutaj...",
+    "backwardPlaceholder": "Wpisz tutaj...",
+    "button": "Create List"
   }
 }

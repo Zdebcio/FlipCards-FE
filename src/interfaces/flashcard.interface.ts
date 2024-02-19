@@ -1,4 +1,5 @@
 import type { PaginationData } from '.'
+import type { UserList } from './list.interface'
 
 export interface Flashcard {
   _id: string
@@ -11,4 +12,10 @@ export interface Flashcard {
 
 export interface GetFlashcardsList extends PaginationData {
   data: Flashcard[]
+}
+
+export interface CreateFlashcardForm {
+  forwardText: string
+  backwardText: string
+  lists: Pick<UserList, '_id' | 'name'>[]
 }

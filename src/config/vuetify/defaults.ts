@@ -6,6 +6,16 @@ const defaults: VuetifyOptions['defaults'] = {
     baseColor: 'primary',
     variant: 'outlined'
   },
+  VTextarea: {
+    color: 'primary',
+    baseColor: 'primary',
+    variant: 'outlined'
+  },
+  VAutocomplete: {
+    color: 'primary',
+    baseColor: 'primary',
+    variant: 'outlined'
+  },
 
   // Buttons
   VBtn: {

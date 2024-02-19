@@ -1,8 +1,9 @@
 {
   "$vuetify": {
-    "noDataText": "No data"
+    "noDataText": "No data",
+    "open": "Open",
+    "close": "Close"
   },
-  "hello": "Hello World",
   "validation": {
     "conflict_email": "Email already exist",
     "fieldRequired": "Field is required",
@@ -15,11 +16,14 @@
     "weak_password": "Password is too weak",
     "diff_password": "Password are not matching",
     "tooLong": "The value is too long. The maximum number of characters is {max}",
-    "invalidListName": "You can use only letters, numbers, spaces, hyphens, underscores and apostrophes"
+    "invalidListName": "You can use only letters, numbers, spaces, hyphens, underscores and apostrophes",
+    "minItems": "Must be related to minimum {min} items",
+    "unique": "Must be an array of unique items"
   },
   "drawer": {
     "Dashboard": "Dashboard",
     "CreateList": "Create new list",
+    "CreateFlashcard": "Create flashcard",
     "UserLists": "Created lists",
     "Logout": "Logout"
   },
@@ -57,5 +61,15 @@
   "userLists": {
     "title": "Created lists",
     "loadMore": "Load more..."
+  },
+  "createFlashcard": {
+    "title": "New card",
+    "listsLabel": "Selected lists:",
+    "forwardLabel": "Front card text:",
+    "backwardLabel": "Back card text:",
+    "listsPlaceholder": "Choose lists...",
+    "forwardPlaceholder": "Type here...",
+    "backwardPlaceholder": "Type here...",
+    "button": "Create List"
   }
 }

@@ -5,6 +5,7 @@ import type { MainLists } from '@/interfaces'
 
 import MainHeader from '@/components/MainHeader.vue'
 import MainList from '@/components/MainList.vue'
+import paths from '@/config/paths'
 import { useGetFlashcards, useGetList } from '@/services/api'
 
 const route = useRoute()
@@ -32,7 +33,13 @@ const convertDataToMainList = (): MainLists[] => {
 <template>
   <div>
     <MainHeader :title="listInfo.data.value?.name ?? ''">
-      <v-btn-icon color="transparent" class="text-h4" size="large" flat>
+      <v-btn-icon
+        color="transparent"
+        class="text-h4"
+        size="large"
+        :to="`${paths.NEW_FLASHCARD}?listID=${listInfo.data.value?._id}`"
+        flat
+      >
         <v-icon class="text-h4">mdi-plus</v-icon>
       </v-btn-icon>
       <v-btn-icon color="primary" size="large" flat>
