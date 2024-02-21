@@ -18,7 +18,6 @@ const tiles: Tile[] = [
     title: t('dashboard.navigation.lastOpened'),
     icon: ReplayIcon,
     bgColor: 'blue',
-    // TODO: change when page will create
     to: paths.HOME,
     cols: 12,
     sm: 12,
@@ -29,7 +28,6 @@ const tiles: Tile[] = [
     title: t('dashboard.navigation.showLists'),
     icon: ListIcon,
     bgColor: 'pink',
-    // TODO: change when page will create
     to: paths.USER_LISTS,
     cols: 12,
     sm: 6,
@@ -39,7 +37,6 @@ const tiles: Tile[] = [
     title: t('dashboard.navigation.statistics'),
     icon: ChartBarIcon,
     bgColor: 'orange',
-    // TODO: change when page will create
     to: '/',
     cols: 12,
     sm: 6,
