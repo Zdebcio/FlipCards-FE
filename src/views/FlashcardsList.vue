@@ -3,9 +3,8 @@ import { useRoute } from 'vue-router'
 
 import type { MainLists } from '@/interfaces'
 
-import MainHeader from '@/components/MainHeader.vue'
+import FlashcardsListHeader from '@/components/FlashcardsListHeader.vue'
 import MainList from '@/components/MainList.vue'
-import paths from '@/constants/paths'
 import { useGetFlashcards, useGetList } from '@/hooks'
 
 const route = useRoute()
@@ -32,20 +31,7 @@ const convertDataToMainList = (): MainLists[] => {
 
 <template>
   <div>
-    <MainHeader :title="listInfo.data.value?.name ?? ''">
-      <v-btn-icon
-        color="transparent"
-        class="text-h4"
-        size="large"
-        :to="`${paths.NEW_FLASHCARD}?listID=${listInfo.data.value?._id}`"
-        flat
-      >
-        <v-icon class="text-h4">mdi-plus</v-icon>
-      </v-btn-icon>
-      <v-btn-icon color="primary" size="large" flat>
-        <v-icon class="text-h5">mdi-play</v-icon>
-      </v-btn-icon>
-    </MainHeader>
+    <FlashcardsListHeader :listInfo="listInfo.data.value" />
     <section>
       <MainList
         @fetchNextPage="fetchNextPage"
