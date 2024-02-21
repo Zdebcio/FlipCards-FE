@@ -14,7 +14,7 @@ import { createFlashcardSchema } from '@/schemas'
 
 const { t } = useI18n()
 
-const { listData, isListFetched } = defineProps<{ listData?: UserList; isListFetched: boolean }>()
+const props = defineProps<{ listData?: UserList; isListFetched: boolean }>()
 
 const autocompleteValue = ref('')
 
@@ -30,19 +30,22 @@ const setInitialListData = (data?: UserList) => (data ? [{ _id: data?._id, name:
 const { defineComponentBinds, handleSubmit, errors, resetForm } = useForm({
   validationSchema: createFlashcardSchema,
   initialValues: {
-    lists: setInitialListData(listData)
+    lists: setInitialListData(props.listData)
   }
 })
 
-watch([isListFetched], () => {
-  if (isListFetched) {
-    resetForm({
-      values: {
-        lists: setInitialListData(listData)
-      }
-    })
+watch(
+  () => props.isListFetched,
+  () => {
+    if (props.isListFetched) {
+      resetForm({
+        values: {
+          lists: setInitialListData(props.listData)
+        }
+      })
+    }
   }
-})
+)
 
 const vuetifyConfig = (state: PublicPathState) => ({
   props: {
@@ -78,7 +81,6 @@ const onSubmit = handleSubmit(async (values, actions) => {
         @update:search="val => (autocompleteValue = val)"
         chips
         closable-chips
-        id="list-ids"
         item-title="name"
         item-value="_id"
         multiple
