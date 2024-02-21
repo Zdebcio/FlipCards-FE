@@ -6,7 +6,7 @@ import Cookies from 'js-cookie'
 
 import { useDisplay } from 'vuetify'
 
-import paths from '@/config/paths'
+import paths from '@/constants/paths'
 import router from '@/router'
 
 defineProps<{

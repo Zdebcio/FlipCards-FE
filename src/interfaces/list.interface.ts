@@ -1,3 +1,5 @@
+import type { MaybeRef } from 'vue'
+
 import type { PaginationData } from '.'
 
 export interface CreateListForm {
@@ -14,4 +16,11 @@ export interface UserList {
 
 export interface GetUserLists extends PaginationData {
   data: UserList[]
+}
+
+export interface GetUserListsPayload {
+  name?: MaybeRef<string>
+  limit?: MaybeRef<number>
+  skip?: MaybeRef<number>
+  page?: MaybeRef<number>
 }
