@@ -1,8 +1,7 @@
 <script lang="ts" setup>
 import { useI18n } from 'vue-i18n'
 
-import type { EventType, GenericKeys, MainLists } from '@/interfaces'
-import type { AxiosError } from 'axios'
+import type { EventType, MainLists } from '@/interfaces'
 const { t } = useI18n()
 
 withDefaults(
@@ -11,7 +10,6 @@ withDefaults(
     isFetching?: boolean
     isFetchingNextPage?: boolean
     hasNextPage?: boolean
-    error?: AxiosError<GenericKeys, any> | null
     isError?: boolean
   }>(),
   { isFetching: false, isFetchingNextPage: false, hasNextPage: false, isError: false }

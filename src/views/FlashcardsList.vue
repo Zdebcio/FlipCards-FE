@@ -5,14 +5,14 @@ import type { MainLists } from '@/interfaces'
 
 import MainHeader from '@/components/MainHeader.vue'
 import MainList from '@/components/MainList.vue'
-import paths from '@/config/paths'
-import { useGetFlashcards, useGetList } from '@/services/api'
+import paths from '@/constants/paths'
+import { useGetFlashcards, useGetList } from '@/hooks'
 
 const route = useRoute()
 
 const listInfo = useGetList(route.params.listID)
 
-const { data, error, isError, fetchNextPage, isFetching, isFetchingNextPage, hasNextPage } =
+const { data, isError, fetchNextPage, isFetching, isFetchingNextPage, hasNextPage } =
   useGetFlashcards(route.params.listID)
 
 const convertDataToMainList = (): MainLists[] => {
@@ -53,7 +53,6 @@ const convertDataToMainList = (): MainLists[] => {
         :isFetching="isFetching"
         :isFetchingNextPage="isFetchingNextPage"
         :hasNextPage="hasNextPage"
-        :error="error"
         :isError="isError"
       />
     </section>

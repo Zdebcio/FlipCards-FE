@@ -5,7 +5,7 @@ import { AxiosError } from 'axios'
 import { type PublicPathState, useForm } from 'vee-validate'
 
 import TextField from '@/components/TextField.vue'
-import paths from '@/config/paths'
+import paths from '@/constants/paths'
 import router from '@/router'
 import { registerSchema } from '@/schemas'
 import { useAuthRegister } from '@/services/api'

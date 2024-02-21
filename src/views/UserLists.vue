@@ -5,8 +5,8 @@ import type { MainLists } from '@/interfaces'
 
 import MainHeader from '@/components/MainHeader.vue'
 import MainList from '@/components/MainList.vue'
-import paths from '@/config/paths'
-import { useGetInfiniteUserLists } from '@/services/api'
+import paths from '@/constants/paths'
+import { useGetInfiniteUserLists } from '@/hooks'
 
 const { t } = useI18n()
 

@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n'
 import { type PublicPathState, useForm } from 'vee-validate'
 
 import TextField from '@/components/TextField.vue'
-import paths from '@/config/paths'
+import paths from '@/constants/paths'
 import router from '@/router'
 import { loginSchema } from '@/schemas'
 import { useAuthLogin } from '@/services/api'

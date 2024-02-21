@@ -4,10 +4,10 @@ import { useI18n } from 'vue-i18n'
 import { type PublicPathState, useForm } from 'vee-validate'
 
 import TextField from '@/components/TextField.vue'
-import paths from '@/config/paths'
+import paths from '@/constants/paths'
+import { useCreateList } from '@/hooks'
 import router from '@/router'
 import { listNameSchema } from '@/schemas'
-import { useCreateList } from '@/services/api'
 
 const { defineComponentBinds, handleSubmit } = useForm({
   validationSchema: listNameSchema

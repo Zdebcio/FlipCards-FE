@@ -11,7 +11,7 @@ import ChartBarIcon from '@/components/icons/ChartBarIcon.vue'
 import CreateListIcon from '@/components/icons/CreateListIcon.vue'
 import ListIcon from '@/components/icons/ListIcon.vue'
 import ReplayIcon from '@/components/icons/ReplayIcon.vue'
-import paths from '@/config/paths'
+import paths from '@/constants/paths'
 
 const tiles: Tile[] = [
   {

@@ -10,9 +10,9 @@ import type { UserList } from '@/interfaces/list.interface'
 
 import AutocompleteField from '@/components/AutocompleteField.vue'
 import Textarea from '@/components/Textarea.vue'
+import { useCreateFlashcard, useGetList, useGetUserLists } from '@/hooks'
 import router from '@/router'
 import { createFlashcardSchema } from '@/schemas'
-import { useCreateFlashcard, useGetList, useGetUserLists } from '@/services/api'
 
 const { t } = useI18n()
 const route = useRoute()
