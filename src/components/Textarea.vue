@@ -1,7 +1,13 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+defineProps<{ label?: string }>()
+</script>
 
 <template>
-  <v-textarea class="textarea text-body-1"></v-textarea>
+  <label v-if="label">
+    <span class="d-block text-h6 mb-2">{{ label }}</span>
+    <v-textarea v-bind="$attrs" class="textarea text-body-1"></v-textarea>
+  </label>
+  <v-textarea v-else v-bind="$attrs" class="textarea text-body-1"></v-textarea>
 </template>
 
 <style lang="scss" scoped>

@@ -1,7 +1,13 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+defineProps<{ label?: string }>()
+</script>
 
 <template>
-  <v-text-field class="textfield text-body-1"></v-text-field>
+  <label v-if="label">
+    <span class="d-block text-h6 mb-2">{{ label }}</span>
+    <v-text-field v-bind="$attrs" class="textfield text-body-1"></v-text-field>
+  </label>
+  <v-text-field v-else v-bind="$attrs" class="textfield text-body-1"></v-text-field>
 </template>
 
 <style lang="scss" scoped>

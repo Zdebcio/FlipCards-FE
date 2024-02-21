@@ -52,17 +52,15 @@ const onSubmit = handleSubmit(async (values, actions) => {
     </header>
     <form @submit.prevent="onSubmit" class="d-flex flex-column align-center py-2">
       <div class="w-100 d-flex flex-column align-center">
-        <label for="list-name" class="text-h6 mb-2 text-uppercase">{{
-          t('createList.nameLabel')
-        }}</label>
         <TextField
-          v-bind="listName"
-          @change="reset()"
           :error-messages="listName['error-message']"
+          :label="t('createList.nameLabel')"
+          :placeholder="t('createList.namePlaceholder')"
+          @change="reset()"
+          class="w-100 list-name-input"
           id="list-name"
           name="name"
-          :placeholder="t('createList.namePlaceholder')"
-          class="w-100 list-name-input"
+          v-bind="listName"
         />
       </div>
       <v-btn
@@ -83,13 +81,5 @@ header {
 
 .list-name-input:deep() {
   max-width: 500px;
-
-  & input {
-    text-align: center;
-  }
-
-  & .v-messages__message {
-    text-align: center;
-  }
 }
 </style>

@@ -1,7 +1,13 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+defineProps<{ label?: string }>()
+</script>
 
 <template>
-  <v-autocomplete class="autocomplete-field text-body-1"></v-autocomplete>
+  <label v-if="label">
+    <span class="d-block text-h6 mb-2">{{ label }}</span>
+    <v-autocomplete v-bind="$attrs" class="autocomplete-field text-body-1"></v-autocomplete>
+  </label>
+  <v-autocomplete v-else v-bind="$attrs" class="autocomplete-field text-body-1"></v-autocomplete>
 </template>
 
 <style lang="scss" scoped>

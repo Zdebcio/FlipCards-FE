@@ -75,10 +75,10 @@ const onSubmit = handleSubmit(async (values, actions) => {
     </header>
     <v-form @submit.prevent="onSubmit" class="d-flex flex-column align-center py-2 form">
       <div class="d-flex flex-column w-100">
-        <label for="list-ids" class="text-h6 mb-2">{{ t('createFlashcard.listsLabel') }}</label>
         <AutocompleteField
           :error-messages="lists['error-message']"
           :items="data?.data"
+          :label="t('createFlashcard.listsLabel')"
           :loading="isListLoading"
           :placeholder="t('createFlashcard.listsPlaceholder')"
           :search="autocompleteValue"
@@ -88,37 +88,31 @@ const onSubmit = handleSubmit(async (values, actions) => {
           id="list-ids"
           item-title="name"
           item-value="_id"
-          return-object
           multiple
           name="lists"
           no-filter
+          return-object
           v-bind="lists"
         />
       </div>
       <div class="d-flex flex-column w-100">
-        <label for="forward-text" class="text-h6 mb-2">
-          {{ t('createFlashcard.forwardLabel') }}
-        </label>
         <Textarea
           :error-messages="forwardText['error-message']"
+          :label="t('createFlashcard.forwardLabel')"
           :placeholder="t('createFlashcard.forwardPlaceholder')"
           @change="reset()"
-          class="w-100 list-name-input"
-          id="forward-text"
+          class="w-100"
           name="forwardText"
           v-bind="forwardText"
         />
       </div>
       <div class="d-flex flex-column w-100">
-        <label for="backward-text" class="text-h6 mb-2">
-          {{ t('createFlashcard.backwardLabel') }}
-        </label>
         <Textarea
           :error-messages="backwardText['error-message']"
+          :label="t('createFlashcard.backwardLabel')"
           :placeholder="t('createFlashcard.backwardPlaceholder')"
           @change="reset()"
-          class="w-100 list-name-input"
-          id="backward-text"
+          class="w-100"
           name="backwardText"
           v-bind="backwardText"
         />
@@ -151,15 +145,5 @@ header {
 
 .form > * {
   max-width: 800px;
-}
-
-.list-name-input:deep() {
-  & input {
-    text-align: center;
-  }
-
-  & .v-messages__message {
-    text-align: center;
-  }
 }
 </style>
