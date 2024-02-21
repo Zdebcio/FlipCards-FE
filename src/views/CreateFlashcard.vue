@@ -15,8 +15,8 @@ const { data: listData, isFetchedAfterMount } = useGetList(route.query.listID?.t
   <div class="px-4 py-2">
     <header class="d-flex w-100 justify-space-between align-center py-2">
       <h1>{{ t('createFlashcard.title') }}</h1>
-      <CreateFlashcardForm :listData="listData" :isListFetched="isFetchedAfterMount" />
     </header>
+    <CreateFlashcardForm :listData="listData" :isListFetched="isFetchedAfterMount" />
   </div>
 </template>
 
