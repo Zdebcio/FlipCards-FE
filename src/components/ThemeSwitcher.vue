@@ -18,7 +18,7 @@ const toggleTheme = () => {
 
 <template>
   <v-switch
-    class="theme-switch"
+    class="theme-switch flex-grow-0"
     hide-details
     inset
     color="primary"
