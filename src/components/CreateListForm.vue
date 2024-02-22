@@ -38,7 +38,7 @@ const onSubmit = handleSubmit(async (values, actions) => {
   try {
     await mutateAsync(values)
     actions.resetForm()
-    router.push(paths.HOME)
+    router.push(paths.USER_LISTS)
   } catch (error) {
     actions.resetField('name')
   }
