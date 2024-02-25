@@ -6,9 +6,9 @@ import { type PublicPathState, useForm } from 'vee-validate'
 
 import TextField from '@/components/TextField.vue'
 import paths from '@/constants/paths'
+import { useAuthRegister } from '@/hooks'
 import router from '@/router'
 import { registerSchema } from '@/schemas'
-import { useAuthRegister } from '@/services/api'
 
 const { t } = useI18n()
 const { mutateAsync, isLoading, error, isError } = useAuthRegister()

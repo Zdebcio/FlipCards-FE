@@ -19,3 +19,8 @@ export interface CreateFlashcardForm {
   backwardText: string
   lists: Pick<UserList, '_id' | 'name'>[]
 }
+
+export interface DeleteFlashcardPayload {
+  flashcardID: string
+  listID: string | string[]
+}
