@@ -31,7 +31,7 @@ header {
   justify-content: space-between;
   margin-left: 1rem;
 
-  & > * {
+  &:deep() > * {
     margin-left: 1rem;
   }
 }
