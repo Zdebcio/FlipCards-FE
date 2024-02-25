@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Cookies from 'js-cookie'
 
-import type { CreateFlashcardForm } from '@/interfaces/flashcard.interface'
+import type { CreateFlashcardForm, DeleteFlashcardPayload } from '@/interfaces/flashcard.interface'
 
 import config from '@/config'
 import defaults from '@/config/defaults'
@@ -27,6 +27,22 @@ export const createFlashcard = async (fields: CreateFlashcardForm): Promise<stri
   const { data } = await axios.post(
     `${FLASHCARDS_API}/create`,
     { listIDs: fields.lists.map(({ _id }) => _id), ...fields },
+    {
+      headers: {
+        Authorization: `Bearer ${Cookies.get('authToken')}`
+      }
+    }
+  )
+
+  return data
+}
+
+export const deleteFlashcard = async ({
+  listID,
+  flashcardID
+}: DeleteFlashcardPayload): Promise<null> => {
+  const { data } = await axios.delete(
+    `${FLASHCARDS_API}/delete/list/${listID}/flashcard/${flashcardID}`,
     {
       headers: {
         Authorization: `Bearer ${Cookies.get('authToken')}`
