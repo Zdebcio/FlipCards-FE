@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { useDisplay } from 'vuetify'
 
+import LanguageSelector from '@/components/LanguageSelector.vue'
 import MenuButton from '@/components/MenuButton.vue'
 import ThemeSwitcher from '@/components/ThemeSwitcher.vue'
 import LogoIcon from '@/components/icons/LogoIcon.vue'
@@ -29,11 +30,12 @@ const { mobile } = useDisplay()
       <MenuButton
         :visible="!!mobile"
         :open="open"
-        @click="$emit('openDrawer')"
+        @open-drawer="$emit('openDrawer')"
         class="w-50 justify-start d-inline-flex align-center"
       />
       <LogoIcon height="50px" class="d-inline-flex align-center flex-shrink-0" />
       <div class="w-50 justify-end d-inline-flex align-center">
+        <LanguageSelector />
         <ThemeSwitcher class="me-5" />
         <v-btn-icon color="primary" class="mx-2">
           <!-- TODO: integrate when API provided -->

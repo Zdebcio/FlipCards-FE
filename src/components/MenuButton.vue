@@ -3,6 +3,10 @@ defineProps<{
   open: boolean
   visible?: boolean
 }>()
+
+defineEmits<{
+  openDrawer: [value?: boolean]
+}>()
 </script>
 
 <template>
@@ -15,6 +19,7 @@ defineProps<{
       class="mx-2"
       id="menu-btn"
       icon
+      @click="$emit('openDrawer')"
     >
       <v-icon id="menu-icon" :icon="open ? 'mdi-window-close' : 'mdi-menu'" size="x-large"></v-icon>
     </v-btn-icon>
