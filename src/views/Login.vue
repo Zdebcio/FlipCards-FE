@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n'
 import { type PublicPathState, useForm } from 'vee-validate'
 
 import TextField from '@/components/TextField.vue'
-import paths from '@/constants/paths'
+import { PATHS } from '@/constants'
 import { useAuthLogin } from '@/hooks'
 import router from '@/router'
 import { loginSchema } from '@/schemas'
@@ -40,7 +40,7 @@ const onSubmit = handleSubmit(async (values, actions) => {
   try {
     await mutateAsync(values)
     actions.resetForm()
-    router.push(paths.HOME)
+    router.push(PATHS.HOME)
   } catch (error) {
     actions.resetField('password')
   }
@@ -59,7 +59,7 @@ const onSubmit = handleSubmit(async (values, actions) => {
       />
     </div>
     <div class="d-flex justify-space-between align-center">
-      <v-btn-text :to="paths.REGISTER" variant="text">
+      <v-btn-text :to="PATHS.REGISTER" variant="text">
         {{ t('login.registerViewButton') }}
       </v-btn-text>
       <v-btn type="submit" :loading="isLoading">{{ t('login.loginButton') }}</v-btn>

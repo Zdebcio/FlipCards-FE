@@ -5,7 +5,7 @@ import type { MainLists } from '@/interfaces'
 
 import MainHeader from '@/components/MainHeader.vue'
 import MainList from '@/components/MainList.vue'
-import paths from '@/constants/paths'
+import { PATHS } from '@/constants'
 import { useGetInfiniteUserLists } from '@/hooks'
 
 const { t } = useI18n()
@@ -19,7 +19,7 @@ const convertDataToMainList = (): MainLists[] => {
       data: data.map(({ name, _id }) => ({
         title: name,
         id: _id,
-        hrefItem: `${paths.LIST}/${_id}`
+        hrefItem: `${PATHS.LIST}/${_id}`
       })),
       ...props
     }))
@@ -31,7 +31,7 @@ const convertDataToMainList = (): MainLists[] => {
 <template>
   <div>
     <MainHeader :title="t('userLists.title')">
-      <v-btn-icon :to="paths.NEW_LIST" color="transparent" class="text-h4" size="large" flat>
+      <v-btn-icon :to="PATHS.NEW_LIST" color="transparent" class="text-h4" size="large" flat>
         <v-icon class="text-h4">mdi-plus</v-icon>
       </v-btn-icon>
     </MainHeader>

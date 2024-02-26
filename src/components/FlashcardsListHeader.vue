@@ -3,7 +3,7 @@ import MainHeader from './MainHeader.vue'
 
 import type { UserList } from '@/interfaces/list.interface'
 
-import paths from '@/constants/paths'
+import { PATHS } from '@/constants'
 
 defineProps<{
   listInfo?: UserList
@@ -13,7 +13,7 @@ defineProps<{
 <template>
   <MainHeader :title="listInfo?.name ?? ''">
     <v-btn-icon
-      :to="`${paths.NEW_FLASHCARD}?listID=${listInfo?._id}`"
+      :to="`${PATHS.NEW_FLASHCARD}?listID=${listInfo?._id}`"
       class="text-h4"
       color="transparent"
       flat
