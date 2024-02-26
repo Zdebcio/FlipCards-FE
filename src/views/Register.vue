@@ -5,7 +5,7 @@ import { AxiosError } from 'axios'
 import { type PublicPathState, useForm } from 'vee-validate'
 
 import TextField from '@/components/TextField.vue'
-import paths from '@/constants/paths'
+import { PATHS } from '@/constants'
 import { useAuthRegister } from '@/hooks'
 import router from '@/router'
 import { registerSchema } from '@/schemas'
@@ -32,7 +32,7 @@ const onSubmit = handleSubmit(async (values, actions) => {
   try {
     await mutateAsync({ email: values.email, password: values.password })
     actions.resetForm()
-    router.push(paths.LOGIN)
+    router.push(PATHS.LOGIN)
   } catch (error) {
     if (error instanceof AxiosError) {
       switch (error.response?.status) {
@@ -76,7 +76,7 @@ const unhandledError = () => {
       }}</span>
     </div>
     <div class="d-flex justify-space-between align-center">
-      <v-btn-text :to="paths.LOGIN" variant="text">
+      <v-btn-text :to="PATHS.LOGIN" variant="text">
         {{ t('register.loginViewButton') }}
       </v-btn-text>
       <v-btn type="submit" :loading="isLoading">{{ t('register.registerButton') }}</v-btn>

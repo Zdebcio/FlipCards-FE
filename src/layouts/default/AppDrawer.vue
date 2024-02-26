@@ -6,7 +6,7 @@ import Cookies from 'js-cookie'
 
 import { useDisplay } from 'vuetify'
 
-import paths from '@/constants/paths'
+import { PATHS } from '@/constants'
 import router from '@/router'
 
 defineProps<{
@@ -24,7 +24,7 @@ const handleOpenStatus = (status: boolean) => emit('openDrawer', status)
 
 const handleLogoutClick = () => {
   Cookies.remove('authToken')
-  router.push(paths.LOGIN)
+  router.push(PATHS.LOGIN)
 }
 
 const drawerRoutes = router.options.routes.filter(route => route.meta?.drawer)

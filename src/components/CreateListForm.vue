@@ -4,7 +4,7 @@ import { useI18n } from 'vue-i18n'
 import { type PublicPathState, useForm } from 'vee-validate'
 
 import TextField from '@/components/TextField.vue'
-import paths from '@/constants/paths'
+import { PATHS } from '@/constants'
 import { useCreateList } from '@/hooks'
 import router from '@/router'
 import { listNameSchema } from '@/schemas'
@@ -38,7 +38,7 @@ const onSubmit = handleSubmit(async (values, actions) => {
   try {
     await mutateAsync(values)
     actions.resetForm()
-    router.push(paths.USER_LISTS)
+    router.push(PATHS.USER_LISTS)
   } catch (error) {
     actions.resetField('name')
   }

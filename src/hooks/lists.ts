@@ -9,19 +9,19 @@ import type {
 } from '@/interfaces/list.interface'
 import type { AxiosError } from 'axios'
 
-import { listsKeys } from '@/constants/queryKeys'
+import { LISTS_KEYS } from '@/constants'
 import { createList, getList, getUserLists } from '@/services/api'
 
 export function useCreateList() {
   return useMutation<string, AxiosError<GenericKeys>, CreateListForm>({
-    mutationKey: listsKeys.createList,
+    mutationKey: LISTS_KEYS.createList,
     mutationFn: createList
   })
 }
 
 export function useGetInfiniteUserLists() {
   return useInfiniteQuery<GetUserLists, AxiosError<GenericKeys>>({
-    queryKey: listsKeys.getInfiniteUserLists,
+    queryKey: LISTS_KEYS.getInfiniteUserLists,
     queryFn: async ({ pageParam = 0 }) => await getUserLists({ page: pageParam }),
 
     getNextPageParam: (lastPage, pages) => {
@@ -32,7 +32,7 @@ export function useGetInfiniteUserLists() {
 
 export function useGetUserLists(payload: GetUserListsPayload) {
   return useQuery({
-    queryKey: listsKeys.getUserLists(payload),
+    queryKey: LISTS_KEYS.getUserLists(payload),
     queryFn: async ({ queryKey }): Promise<GetUserLists> => {
       const [, params] = queryKey
       const { name, limit, skip } = params as GetUserListsPayload
@@ -44,7 +44,7 @@ export function useGetUserLists(payload: GetUserListsPayload) {
 
 export function useGetList(listID?: string | string[]) {
   return useQuery<UserList, AxiosError<GenericKeys>>({
-    queryKey: listsKeys.getList(listID),
+    queryKey: LISTS_KEYS.getList(listID),
     queryFn: async () => await getList(listID),
     enabled: !!listID
   })

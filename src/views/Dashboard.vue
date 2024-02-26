@@ -11,14 +11,14 @@ import ChartBarIcon from '@/components/icons/ChartBarIcon.vue'
 import CreateListIcon from '@/components/icons/CreateListIcon.vue'
 import ListIcon from '@/components/icons/ListIcon.vue'
 import ReplayIcon from '@/components/icons/ReplayIcon.vue'
-import paths from '@/constants/paths'
+import { PATHS } from '@/constants'
 
 const tiles: Tile[] = [
   {
     title: t('dashboard.navigation.lastOpened'),
     icon: ReplayIcon,
     bgColor: 'blue',
-    to: paths.HOME,
+    to: PATHS.HOME,
     cols: 12,
     sm: 12,
     xl: 8,
@@ -28,7 +28,7 @@ const tiles: Tile[] = [
     title: t('dashboard.navigation.showLists'),
     icon: ListIcon,
     bgColor: 'pink',
-    to: paths.USER_LISTS,
+    to: PATHS.USER_LISTS,
     cols: 12,
     sm: 6,
     xl: 4
@@ -46,7 +46,7 @@ const tiles: Tile[] = [
     title: t('dashboard.navigation.createList'),
     icon: CreateListIcon,
     bgColor: 'green',
-    to: paths.NEW_LIST,
+    to: PATHS.NEW_LIST,
     fullWidth: true,
     cols: 12,
     sm: 12,

@@ -2,12 +2,12 @@ import { useInfiniteQuery, useMutation } from '@tanstack/vue-query'
 
 import type { GetFlashcardsList } from '@/interfaces/flashcard.interface'
 
-import { flashcardsKeys } from '@/constants/queryKeys'
+import { FLASHCARDS_KEYS } from '@/constants'
 import { createFlashcard, deleteFlashcard, getFlashcards } from '@/services/api'
 
 export function useGetFlashcards(listID?: string | string[]) {
   return useInfiniteQuery({
-    queryKey: flashcardsKeys.getFlashcards(listID),
+    queryKey: FLASHCARDS_KEYS.getFlashcards(listID),
     queryFn: async ({ pageParam = 0, queryKey }): Promise<GetFlashcardsList> =>
       await getFlashcards(pageParam, queryKey[1]),
     getNextPageParam: (lastPage, pages) => {
@@ -18,14 +18,14 @@ export function useGetFlashcards(listID?: string | string[]) {
 
 export function useCreateFlashcard() {
   return useMutation({
-    mutationKey: flashcardsKeys.createFlashcard,
+    mutationKey: FLASHCARDS_KEYS.createFlashcard,
     mutationFn: createFlashcard
   })
 }
 
 export function useDeleteFlashcard() {
   return useMutation({
-    mutationKey: flashcardsKeys.deleteFlashcard,
+    mutationKey: FLASHCARDS_KEYS.deleteFlashcard,
     mutationFn: deleteFlashcard
   })
 }
