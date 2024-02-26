@@ -16,9 +16,7 @@ import { LOCAL_STORAGE } from '@/constants'
     single-line
     v-model="$i18n.locale"
     variant="solo"
-  >
-    <template v-slot:append-inner></template>
-  </v-select>
+  ></v-select>
 </template>
 
 <style lang="scss" scoped>
