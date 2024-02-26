@@ -1,4 +1,7 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { setItem } from '@/config/localStorage'
+import { LOCAL_STORAGE } from '@/constants'
+</script>
 
 <template>
   <div class="language-wrapper">
@@ -13,6 +16,7 @@
       hide-no-data
       hide-selected
       hide-details
+      @update:model-value="(val: string) => setItem(LOCAL_STORAGE.LANG, val)"
     >
       <template v-slot:append-inner></template>
     </v-select>
