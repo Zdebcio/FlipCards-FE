@@ -5,17 +5,17 @@ import { LOCAL_STORAGE } from '@/constants'
 
 <template>
   <v-select
-    v-model="$i18n.locale"
     :items="$i18n.availableLocales.map(value => ({ title: value.toUpperCase(), value }))"
+    @update:model-value="(val: string) => setItem(LOCAL_STORAGE.LANG, val)"
     bg-color="transparent"
     color="transparent"
     flat
-    variant="solo"
-    single-line
+    hide-details
     hide-no-data
     hide-selected
-    hide-details
-    @update:model-value="(val: string) => setItem(LOCAL_STORAGE.LANG, val)"
+    single-line
+    v-model="$i18n.locale"
+    variant="solo"
   >
     <template v-slot:append-inner></template>
   </v-select>
