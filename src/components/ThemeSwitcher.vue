@@ -4,6 +4,7 @@ import { ref } from 'vue'
 import { useTheme } from 'vuetify'
 
 import { setItem } from '@/config/localStorage'
+import { LOCAL_STORAGE } from '@/constants'
 import { Theme } from '@/interfaces'
 
 const theme = useTheme()
@@ -12,7 +13,7 @@ const currentTheme = ref(theme.global.name.value)
 
 const toggleTheme = () => {
   theme.global.name.value = currentTheme.value
-  setItem('theme', currentTheme.value)
+  setItem(LOCAL_STORAGE.THEME, currentTheme.value)
 }
 </script>
 
